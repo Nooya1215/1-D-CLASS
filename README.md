@@ -1,1 +1,1 @@
-# 1-D-CLASS
+# 1:D CLASS
