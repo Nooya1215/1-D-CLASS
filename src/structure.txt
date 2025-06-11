@@ -1,0 +1,32 @@
+D:.
+|   App.css
+|   App.jsx
+|   index.css
+|   main.jsx
+|   structure.txt
+|   
++---assets
+|   |   react.svg
+|   |   
+|   +---css
+|   |       category.css
+|   |       footer.css
+|   |       header.css
+|   |       layout.css
+|   |       new.css
+|   |       reset.css
+|   |       review.css
+|   |       title.css
+|   |       
+|   \---js
+|           review.js
+|           title.js
+|           
+\---components
+        Category.jsx
+        Footer.jsx
+        Header.jsx
+        New.jsx
+        Review.jsx
+        Title.jsx
+        

@@ -1,0 +1,162 @@
+#new {
+  
+}
+
+#new .wrap {
+  height: 100%;
+}
+
+#new .wrap h2 {
+  color: #000;
+  font-size: 36px;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+#new .wrap .new-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: fit-content;
+  gap: 20px;
+}
+
+#new .wrap .new-list li {
+  width: 345px;
+  height: 345px;
+  border: 1px solid #000;
+  border-radius: 15px;
+}
+
+#new .wrap .new-list li:nth-of-type(1) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+#new .wrap .new-list li:nth-of-type(2) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#new .wrap .new-list li:nth-of-type(3) {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+#new .wrap .new-list li:nth-of-type(4) {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+#new .wrap .new-list li:nth-of-type(5) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+#new .wrap .new-list li:nth-of-type(6) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+#new .wrap .new-list li:nth-of-type(7) {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+#new .wrap .new-list li:nth-of-type(8) {
+  grid-column: 4;
+  grid-row: 2;
+}
+
+#new .wrap .new-list li article {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#new .wrap .new-list li .card {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+#new .wrap .new-list li .card img {
+  height: 50%;
+  width: 100%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+#new .wrap .new-list li .card .card-info {
+  height: calc((345px / 2) - 40px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#new .wrap .new-list li .card .card-info h3 {
+  text-align: left;
+}
+
+#new .wrap .new-list li .card .card-info .meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#new .wrap .new-list li .card .card-info .meta .cate {
+  display: flex;
+  gap: 20px;
+  height: 20px;
+}
+
+#new .wrap .new-list li .card .card-info .meta .cate span {
+  width: fit-content;
+  height: 100%;
+  padding: 0 14px;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 10px;
+  background-color: #E8F2FF;
+}
+
+#new .wrap .new-list li .card .card-info .meta .cate span:nth-of-type(1) {
+  background-color: #F0F0F0;
+} 
+
+#new .wrap .new-list li .card .card-info .meta .rating {
+  display: flex;
+  gap: 20px;
+}
+
+#new .wrap .new-list li .card .card-info .meta .rating span {
+  
+}
+
+#new .wrap .new-list li .card .card-info .tags {
+  display: flex;
+  width: fit-content;
+  gap: 10px;
+}
+
+#new .wrap .new-list li .card .card-info .tags span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 20px;
+  border: 1px solid #D9D9D9;
+  box-sizing: border-box;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+#new .wrap .new-list li .card .card-info p {
+  width: fit-content;
+}

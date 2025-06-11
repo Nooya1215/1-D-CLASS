@@ -1,0 +1,41 @@
+import React from 'react';
+import "../assets/css/footer.css";
+
+export default function Footer() {
+  return (
+    <footer id="footer">
+      <div className="wrap">
+        <div className='footer-logo'>
+          <div>
+            <h2 className="h2">1:D CLASS</h2>
+            <p className="p">감성을 담은 원데이 클래스 플랫폼입니다.</p>
+          </div>
+        </div>
+        <div className='footer-info'>
+          <ul>
+            <li>
+              <a href="">깃허브</a>
+            </li>
+            <li>
+              <a href="">노션</a>
+            </li>
+            <li>
+              <a href="">피그마</a>
+            </li>
+          </ul>
+          <p className="p">
+            ⓒ 2025 Team Studio 3 <br />
+            Designed & Developed by 경유라, 김선우, 양해지
+          </p>
+        </div>
+        <div className='footer-faq'>
+          <div>
+            <h3 className="h3">도움이 필요하신가요?</h3>
+            <a href="">FAQ / 1:1 문의</a>
+            <p className='p'>평일: 10:00 ~ 20:00 (주말, 공휴일 제외)</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

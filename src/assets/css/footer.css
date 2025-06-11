@@ -1,0 +1,128 @@
+#footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 170px;
+  background-color: #C0C0C0;
+}
+
+#footer .wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 98px;
+}
+
+#footer .wrap .footer-logo {
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#footer .wrap .footer-logo div {
+  width: fit-content;
+  height: fit-content;
+}
+
+#footer .wrap .footer-logo div h2 {
+  color: #3b3b3b;
+  font-size: 32px;
+  font-weight: 900;
+  text-align: left;
+}
+
+#footer .wrap .footer-logo div p {
+  color: #3b3b3b;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+#footer .wrap .footer-info {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid #929292;
+  border-right: 1px solid #929292;
+}
+
+#footer .wrap .footer-info ul {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+#footer .wrap .footer-info ul li {
+  width: 40px;
+  height: 40px;
+}
+
+#footer .wrap .footer-info ul li a {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  font-size: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#footer .wrap .footer-info ul li:nth-of-type(1) a {
+  background-image: url(../img/svg/github.svg);
+}
+
+#footer .wrap .footer-info ul li:nth-of-type(2) a {
+  background-image: url(../img/svg/notion.svg);
+}
+
+#footer .wrap .footer-info ul li:nth-of-type(3) a {
+  background-image: url(../img/svg/figma.svg);
+}
+
+#footer .wrap .footer-info p {
+  color: #3b3b3b;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+#footer .wrap .footer-faq {
+  grid-column: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#footer .wrap .footer-faq div {
+  width: fit-content;
+  height: fit-content;
+}
+
+#footer .wrap .footer-faq div h3 {
+  color: #3b3b3b;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: left;
+}
+
+#footer .wrap .footer-faq div a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 230px;
+  height: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  color: #fff !important;
+  background-color: #565656;
+  margin: 5px 0;
+}
+
+#footer .wrap .footer-faq div p {
+  color: #3b3b3b;
+  font-size: 11px;
+  font-weight: 400;
+  text-align: left;
+}
