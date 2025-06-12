@@ -22,8 +22,8 @@
   gap: 30px;
 }
 #login .wrap form input {
-  height: 36px;
-  padding: 10px;
+  height: 38px;
+  padding: 10px 20px;
   background-color: #fff;
   color: #000;
   border: 1px solid #999;
