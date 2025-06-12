@@ -34,6 +34,10 @@
 }
 #login .wrap form a {
   text-align: right;
+  font-size: 14px;
+  font-weight: 400;
+  color: #727272;
+  text-decoration: underline;
 }
 #login .wrap form button {
   background-color: #FF6F61;
@@ -44,7 +48,10 @@
 #login .wrap p {
   display: flex;
   margin-top: 30px;
+  font-size: 14px;
+  font-weight: 400;
 }
 #login .wrap p a {
-
+  color: #727272 !important;
+  text-decoration: underline;
 }

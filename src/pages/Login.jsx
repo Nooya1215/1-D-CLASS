@@ -13,7 +13,7 @@ export default function Login() {
           <Link to="">이메일/비밀번호 찾기</Link>
           <button type="submit">로그인</button>
         </form>
-        <p className="p">아직 회원이 아니신가요?<Link to="">회원가입</Link></p>
+        <p className="p">아직 회원이 아니신가요?&nbsp;<Link to="">회원가입</Link></p>
       </div>
     </section>
   );
