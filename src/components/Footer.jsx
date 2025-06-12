@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "../assets/css/footer.css";
 
 export default function Footer() {
@@ -31,7 +32,7 @@ export default function Footer() {
         <div className='footer-faq'>
           <div>
             <h3 className="h3">도움이 필요하신가요?</h3>
-            <a href="">FAQ / 1:1 문의</a>
+            <Link to="/faq">FAQ / 1:1 문의</Link>
             <p className='p'>평일: 10:00 ~ 20:00 (주말, 공휴일 제외)</p>
           </div>
         </div>

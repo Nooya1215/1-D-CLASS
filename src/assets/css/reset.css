@@ -45,16 +45,27 @@ address {
 }
 
 button {
-  border: none;
+  border: none !important;
   padding: 0;
   margin: 0;
   font: inherit;
   color: inherit;
   cursor: pointer;
+  background-color: #fff !important;
+  transition: none !important;
+  padding: 0 !important;
+}
+
+button:hover {
+  border: none;
 }
 
 span {
   height: 100%;
   display: flex;
   width: fit-content;
+}
+
+input {
+  background-color: #fff;
 }
