@@ -39,3 +39,15 @@
   font-size: 14px;
   font-weight: 700;
 }
+
+#sign .wrap p {
+  display: flex;
+  margin-top: 30px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+#sign .wrap p a {
+  color: #727272 !important;
+  text-decoration: underline;
+}

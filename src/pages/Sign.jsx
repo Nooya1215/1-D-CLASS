@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "../assets/css/Sign.css";
 
 export default function Sign() {
@@ -13,6 +14,9 @@ export default function Sign() {
           <input type="password" name="confirmPassword" id="confirmPassword" placeholder="비밀번호 확인" />
           <button type="submit">회원가입</button>
         </form>
+        <p className="p">
+          이미 회원이 신가요?&nbsp;<Link to="/login">로그인</Link>
+        </p>
       </div>
     </section>
   );
