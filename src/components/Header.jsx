@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header>
       <div className='wrap'>
-        <h1 className="h1">1:D CLASS</h1>
+        <Link to="/"><h1 className="h1">1:D CLASS</h1></Link>
         <form method="get" action="/search">
           <input type="search" name="search" id="search" />
           <button type="submit"></button>
