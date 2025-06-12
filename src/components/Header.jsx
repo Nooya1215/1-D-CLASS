@@ -13,7 +13,7 @@ export default function Header() {
         </form>
         <ul className='gnb'>
           <li><Link to="">찜</Link></li>
-          <li><Link to="">로그인</Link></li>
+          <li><Link to="/login">로그인</Link></li>
           <li><a href="">언어</a></li>
           <li><a href="">다크모드</a></li>
           <li><a href="">메뉴</a></li>
