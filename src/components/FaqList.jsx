@@ -22,6 +22,25 @@ const relatedData = [
 
 const refundDate = [
   {
+    question: '클래스 예약을 취소하고 싶어요.',
+    answer: '클래스 예약 취소는 예약 페이지에서 가능하며, 취소 정책에 따라 처리됩니다.',
+  },
+  {
+    question: '환불은 언제 받을 수 있나요?',
+    answer: '환불은 취소 접수 후 약 3~5영업일 이내에 처리됩니다.',
+  },
+  {
+    question: '당일 취소도 가능한가요?',
+    answer: '당일 취소는 불가능할 수 있으며, 상세 취소 정책을 참고해 주세요.',
+  },
+  {
+    question: '클래스가 취소되면 어떻게 되나요?',
+    answer: '클래스 취소 시 별도 안내드리며, 전액 환불 또는 일정 변경 옵션을 제공합니다.',
+  },
+];
+
+const classDate = [
+  {
     question: '클래스 소요 시간은 얼마나 되나요?',
     answer: '클래스마다 상이하지만 평균적으로 1시간에서 2시간 정도 소요됩니다.',
   },
@@ -82,7 +101,7 @@ export default function FaqList() {
 
   return (
     <>
-      <section id="faqList">
+      <section id="faqList" className='list'>
         <div className="wrap">
           <h2 className="h2">이용 관련</h2>
           <ul className="relate-list">
@@ -108,7 +127,7 @@ export default function FaqList() {
           </ul>
         </div>
       </section>
-      <section id="faqList">
+      <section id="faqList" className='list'>
         <div className="wrap">
           <h2 className="h2">취소 및 환불 관련</h2>
           <ul className="relate-list">
@@ -134,7 +153,33 @@ export default function FaqList() {
           </ul>
         </div>
       </section>
-      <section id="faqList">
+      <section id="faqList" className='list'>
+        <div className="wrap">
+          <h2 className="h2">클래스 관련</h2>
+          <ul className="relate-list">
+            {classDate.map((item, index) => (
+              <li
+                key={index}
+                className={activeIndex === index ? 'active' : ''}
+              >
+                <button
+                  className="relate-btn"
+                  onClick={() => toggleFaqList(index)}
+                  aria-expanded={activeIndex === index}
+                  aria-controls={`answer-${index}`}
+                >
+                  {item.question}
+                  <span className="faqList-icon">{activeIndex === index ? '-' : '+'}</span>
+                </button>
+                {activeIndex === index && (
+                  <p id={`answer-${index}`} className="p">{item.answer}</p>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+      <section id="faqList" className='list'>
         <div className="wrap">
           <h2 className="h2">개인 메뉴 관련</h2>
           <ul className="relate-list">
@@ -160,9 +205,9 @@ export default function FaqList() {
           </ul>
         </div>
       </section>
-      <section id="faqList">
+      <section id="faqList" className='list'>
         <div className="wrap">
-          <h2 className="h2">개인 메뉴 관련</h2>
+          <h2 className="h2">기타 시스템 및 정책</h2>
           <ul className="relate-list">
             {sysDate.map((item, index) => (
               <li

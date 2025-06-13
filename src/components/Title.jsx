@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import title1 from "../assets/img/svg/rectangle.svg";
 import "../assets/css/title.css";
 
-
 export default function Title() {
   useEffect(() => {
-    const $slider = window.$('.title-slide');
+    const $ = window.$;
+    const $slider = $('.title-slide');
 
     if ($slider.hasClass('slick-initialized')) {
       $slider.slick('unslick');
@@ -23,12 +23,16 @@ export default function Title() {
       fade: true,
       cssEase: 'linear',
       customPaging: function (slider, i) {
-        return (
-          '<span class="custom-dot">' + (i + 1) + ' / ' + slider.slideCount + '</span>'
-        );
+        return '<span class="custom-dot">' + (i + 1) + ' / ' + slider.slideCount + '</span>';
       },
     });
-  }, []); // 마운트 시 한 번만 실행
+
+    return () => {
+      if ($slider.hasClass('slick-initialized')) {
+        $slider.slick('unslick');
+      }
+    };
+  }, []);
 
   return (
     <div id="title">

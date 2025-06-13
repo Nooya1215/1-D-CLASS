@@ -15,7 +15,7 @@ export default function Sign() {
           <button type="submit">회원가입</button>
         </form>
         <p className="p">
-          이미 회원이 신가요?&nbsp;<Link to="/login">로그인</Link>
+          이미 회원이신가요?&nbsp;<Link to="/login">로그인</Link>
         </p>
       </div>
     </section>

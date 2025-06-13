@@ -3,7 +3,8 @@ import "../assets/css/review.css";
 
 export default function Review() {
   useEffect(() => {
-    const $slider = window.$('.review-list');
+    const $ = window.$;
+    const $slider = $('.review-list');
 
     if ($slider.hasClass('slick-initialized')) {
       $slider.slick('unslick');
@@ -19,6 +20,12 @@ export default function Review() {
       autoplay: true,
       autoplaySpeed: 2000,
     });
+
+    return () => {
+      if ($slider.hasClass('slick-initialized')) {
+        $slider.slick('unslick');
+      }
+    };
   }, []);
 
   return (
