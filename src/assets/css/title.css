@@ -16,15 +16,16 @@
   top: 50%;
   left: 50%;
   max-width: 1903px;
+  min-width: 1903px;
   transform: translate(-50%, -50%);
 }
 
 #title .wrap .title-slide .slick-list {
-
+  width: 100%;
 }
 
 #title .wrap .title-slide .slick-list .slick-track {
-
+  width: 100%;
 }
 
 #title .wrap .title-slide .slick-list .slick-track li {
@@ -32,7 +33,7 @@
 }
 
 #title .wrap .title-slide .slick-list .slick-track li img {
-
+  
 }
 
 #title .wrap .title-slide .slick-list .slick-track li h2 {
