@@ -33,7 +33,9 @@
 }
 
 #sign .wrap form button {
-  background-color: #FF6F61;
+  width: 400px;
+  height: 60px;
+  background-color: #FF6F61 !important;
   color: #fff;
   font-size: 14px;
   font-weight: 700;
