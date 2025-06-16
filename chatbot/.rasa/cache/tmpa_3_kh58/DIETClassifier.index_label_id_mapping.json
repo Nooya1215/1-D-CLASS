@@ -1,0 +1,21 @@
+{
+  "0": "ask_alone",
+  "1": "ask_apply_class",
+  "2": "ask_booking_history",
+  "3": "ask_cancel",
+  "4": "ask_cancel_today",
+  "5": "ask_class_canceled",
+  "6": "ask_completed_class",
+  "7": "ask_contact",
+  "8": "ask_coupon",
+  "9": "ask_duration",
+  "10": "ask_favorite_save",
+  "11": "ask_favorite_view",
+  "12": "ask_hours",
+  "13": "ask_materials",
+  "14": "ask_payment",
+  "15": "ask_pet",
+  "16": "ask_refund_time",
+  "17": "ask_review",
+  "18": "ask_signup"
+}
