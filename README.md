@@ -6,23 +6,23 @@
 
 1. CMD에서 가상환경 생성 및 활성화
 
-```cmd
-python -m venv rasa-env
-.\rasa-env\Scripts\activate
+1. cmd
+`python -m venv rasa-env`
+`.\rasa-env\Scripts\activate`
 
-    PIP 업데이트
+2. PIP 업데이트
 
-python -m pip install --upgrade pip
+`python -m pip install --upgrade pip`
 
-    Rasa 설치
+3. Rasa 설치
 
-pip install rasa
+`pip install rasa`
 
-    Rasa 초기화
+4. Rasa 초기화
 
-rasa init
+`rasa init`
 
-    Rasa 트레이닝 & 실행
+5. Rasa 트레이닝 & 실행
 
-rasa train
-rasa run
+`rasa train`
+`rasa run`
