@@ -12,7 +12,6 @@ export default function App() {
     <BrowserRouter>
       <Header />
       <AppRouter />
-      <Chatbot />
       <Footer />
     </BrowserRouter>
   );
