@@ -15,7 +15,6 @@ app.use(cors({
   origin: [
     'http://localhost:5173',
     'http://127.0.0.1:5173',
-    // 기존 포트들 유지해도 무방
   ],
   methods: ["GET", "POST"],
   credentials: true
