@@ -22,4 +22,6 @@
 6. Rasa 트레이닝 & 실행
    
   `rasa train`
-  `rasa run`
+
+  react 기준
+  `rasa run --enable-api --cors "http://localhost:5173"`
