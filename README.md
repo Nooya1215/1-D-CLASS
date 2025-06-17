@@ -23,5 +23,5 @@
    
   `rasa train`
 
-  react 기준
-  `rasa run --enable-api --cors "http://localhost:5173"`
+  개발환경 기준
+  `rasa run --enable-api --cors "*"`
