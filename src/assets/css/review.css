@@ -68,7 +68,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  border: 1.5px solid #f67560;
+  border: 1.5px solid #f67560 !important;
   background-color: transparent;
   padding: 0;
   outline: none;
@@ -81,8 +81,8 @@
 }
 
 #review .slick-dots li.slick-active button {
-  background-color: #f67560;
-  border-color: #f67560;
+  background-color: #f67560 !important;
+  border-color: #f67560 !important;
 }
 
 #review .slick-dots li.slick-active button::before {
