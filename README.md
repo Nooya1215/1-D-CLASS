@@ -8,6 +8,7 @@
   `.\rasa-env\Scripts\activate`
 
 1-1. 가상화 나가기
+
   `deactivate`
 
 2. PIP 업데이트
