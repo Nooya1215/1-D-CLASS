@@ -1,47 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Card from '../components/Card';
 import "../assets/css/new.css";
 
 export default function New() {
+  const [newProducts, setNewProducts] = useState([]);
+
+  useEffect(() => {
+    fetch('/src/data/products.json')
+      .then((res) => res.json())
+      .then((data) => {
+        const sorted = data.sort(
+          (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)
+        );
+        setNewProducts(sorted.slice(0, 8));
+      });
+  }, []);
+
   return (
     <section id="new">
       <div className="wrap">
         <h2 className="h2">NEW 클래스</h2>
         <ul className='new-list'>
-          <li>
-            <article>
-              <a href="" className="card">
-                <img src="" alt="" />
-                <div className="card-info">
-                  <div className="meta">
-                    <div className="cate">
-                      <span>반려동물</span>
-                      <span>평일</span>
-                    </div>
-                    <div className="rating">
-                      <span>⭐ 4.7</span>
-                      <span>567</span>
-                    </div>
-                  </div>
-                  <h3 className="title">클래스 네임</h3>
-                  <div className='meta'>
-                    <div className="tags">
-                      <span>선물용</span>
-                      <span>친구랑</span>
-                      <span>펫동반</span>
-                    </div>
-                    <p className="price">56,000원</p>
-                  </div>
-                </div>
-              </a>
-            </article>
-          </li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
+              {newProducts.map((product) => (
+                <Card key={product.id} product={product} />
+              ))}
         </ul>
       </div>
     </section>

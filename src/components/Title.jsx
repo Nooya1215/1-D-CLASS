@@ -43,7 +43,7 @@ export default function Title() {
             <h2 className="h2">1:D CLASS는<br />ONE DAY CLASS입니다</h2>
           </li>
           <li>
-            <img src="https://placehold.co/1903x550" alt="타이틀 이미지" />
+            <img src={title1} alt="타이틀 이미지" />
             <h2 className="h2">1:D CLASS는<br />ONE DAY CLASS입니다</h2>
           </li>
           <li>

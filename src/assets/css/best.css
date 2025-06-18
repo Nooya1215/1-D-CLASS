@@ -24,7 +24,6 @@
   width: 710px;
   height: 120px;
 }
-
 #best .wrap .best-list li:nth-of-type(1) {
   grid-column: 1;
   grid-row: 1;
@@ -50,6 +49,7 @@
   grid-row: 5;
 }
 
+/* 6번 ~ 10번: column 2 */
 #best .wrap .best-list li:nth-of-type(6) {
   grid-column: 2;
   grid-row: 1;
@@ -74,8 +74,8 @@
   grid-column: 2;
   grid-row: 5;
 }
-
 #best .wrap .best-list li .best-info {
+  position: relative;
   display: flex;
   width: 100%;
   height: 100%;
@@ -101,27 +101,14 @@
   width: 100%;
 }
 
-#best .wrap .best-list li .best-info img {
+#best .wrap .best-list li .best-info img:not(.wish-btn img) {
   width: 150px;
+  min-width: 150px;
   height: 100%;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
 }
 
-#best .wrap .best-list li .best-info .best-book {
-  background-color: #000;
-  transition: none;
-  position: absolute;
-  width: 20px;
-  height: 28px;
-  left: 120px;
-  top: 10px;
-  padding: 0;
-}
-
-#best .wrap .best-list li .best-info .best-book:hover {
-  border: none;
-}
 
 #best .wrap .best-list li .best-info a .info-top {
   display: flex;
@@ -207,4 +194,43 @@
   font-weight: 400;
   width: 100%;
   justify-content: end;
+  text-decoration: line-through;
+}
+
+/* wishBtn */
+#best .wish-btn {
+  transition: none;
+  position: absolute;
+  width: 20px;
+  height: 28px;
+  left: 100px;
+  top: 10px;
+  padding: 0;
+}
+/* .ratingImg */
+.best-rating .review {
+  display: flex;
+}
+.best-rating .review::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url(../img/svg/review.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.best-rating .wish {
+  display: flex;
+}
+.best-rating .wish::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url(../img/svg/bookmark.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
