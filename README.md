@@ -37,4 +37,5 @@
   `.\rasa-env\Scripts\activate`
 
 2. rasa 실행
+   
    `rasa run --enable-api --cors "*"`
