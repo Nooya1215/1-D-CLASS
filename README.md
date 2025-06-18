@@ -38,4 +38,4 @@
 
 2. rasa 실행
    
-   `rasa run --enable-api --cors "*"`
+  `rasa run --enable-api --cors "*"`
