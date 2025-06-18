@@ -2,10 +2,13 @@
 
 ### 가상환경 생성 및 챗봇 활성화
 
-1. cmd
+1. 가상화 파일 생성 및 실행
 
   `python -m venv rasa-env`
   `.\rasa-env\Scripts\activate`
+
+1-1. 가상화 나가기
+  `deactivate`
 
 2. PIP 업데이트
    
@@ -24,4 +27,5 @@
   `rasa train`
 
   개발환경 기준
+  
   `rasa run --enable-api --cors "*"`
