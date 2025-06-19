@@ -29,3 +29,10 @@
 
   개발환경 기준
   `rasa run --enable-api --cors "*"`
+
+### .env
+`PORT=8080
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=password
+DB_NAME=1d_class`
