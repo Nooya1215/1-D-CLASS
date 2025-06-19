@@ -31,8 +31,8 @@
   `rasa run --enable-api --cors "*"`
 
 ### .env
-```PORT=8080
+`PORT=8080
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=password
-DB_NAME=1d_class
+DB_NAME=1d_class`
