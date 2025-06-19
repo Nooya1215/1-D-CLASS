@@ -1,0 +1,116 @@
+#detailTitle {
+    display: flex;
+    align-items: center;
+}
+#detailTitle .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+}
+#detailTitle .wrap {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: auto 70px;
+}
+#detailTitle .img {
+    max-height: 570px;
+    overflow: hidden;
+    align-self: center;
+    grid-column: 1;
+    grid-row: 1;
+}
+#detailTitle .info {
+    grid-column: 1;
+    grid-row: 2;
+}
+#detailTitle .info ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 100px;
+    background-color: #ffefea;
+}
+#detailTitle .info ul li {
+    display: flex;
+    gap: 10px;
+}
+#detailTitle .info ul li::before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+#detailTitle .info ul li:nth-child(1)::before {
+    background-image: url(../img/svg/category.svg);
+}
+#detailTitle .info ul li:nth-child(2)::before {
+    background-image: url(../img/svg/duration.svg);
+}
+#detailTitle .info ul li:nth-child(3)::before {
+    background-image: url(../img/svg/level.svg);
+}
+#detailTitle .info ul li:nth-child(4)::before {
+    background-image: url(../img/svg/person.svg);
+}
+
+#detailTitle .reservation {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    padding: 20px;
+    border: 1px solid #ff6f61;
+}
+#detailTitle .reservation h2 {
+}
+#detailTitle .reservation .product-info {
+    display: flex;
+}
+/* .ratingImg */
+.review, .wish, .place {
+  display: flex;
+}
+.review::before, .wish::before, .place::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.review::before {
+  background-image: url(../img/svg/review.svg);
+}
+.wish::before {
+  background-image: url(../img/svg/bookmark.svg);
+}
+.place::before {
+  background-image: url(../img/svg/place.svg);
+}
+#detailTitle .reservation .date {
+}
+#detailTitle .reservation .notice {
+}
+#detailTitle .reservation .tags {
+}
+#detailTitle .reservation .person {
+    display: flex;
+    gap: 20px;
+}
+#detailTitle .reservation .person span {
+    align-items: center;
+}
+#detailTitle .reservation .price {
+}
+#detailTitle .reservation .btns {
+}
+
+/* 달력css */
+.react-calendar__tile.saturday {
+  color: blue;
+}

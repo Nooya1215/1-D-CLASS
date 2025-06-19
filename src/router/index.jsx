@@ -6,7 +6,7 @@ import Sign from '../pages/Sign';
 import ProductList from '../pages/ProductList';
 import Faq from '../pages/Faq';
 import WishListPage from '../pages/WishListPage';
-
+import ProductDetail from '../pages/ProductDetail';
 
 export default function AppRouter() {
   return (
@@ -17,6 +17,7 @@ export default function AppRouter() {
       <Route path="/login" element={<Login />} />
       <Route path="/sign" element={<Sign />} />
       <Route path="/products/:category" element={<ProductList />} />
+      <Route path="/product/:id" element={<ProductDetail />} />
       <Route path="/faq" element={<Faq />} />
     </Routes>
   );
