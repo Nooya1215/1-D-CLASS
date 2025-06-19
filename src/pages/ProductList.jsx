@@ -86,7 +86,7 @@ const ProductList = () => {
         onReset={handleReset}
         selectedFilters={filters}
       />
-      <p>{filteredProducts.length}개의 클래스</p>
+      <p className='num'>{filteredProducts.length}개의 클래스</p>
       {filteredProducts.length > 0 ? (
         <ul className="product-list-container">
           {filteredProducts.map(product => (
@@ -94,7 +94,7 @@ const ProductList = () => {
           ))}
         </ul>
       ) : (
-        <p>조건에 맞는 상품이 없습니다.</p>
+        <p className='num'>조건에 맞는 상품이 없습니다.</p>
       )}
     </div>
   );
