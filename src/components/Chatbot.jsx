@@ -1,25 +1,29 @@
 import React, { useEffect } from "react";
-import "../assets/css/chatbot.css";
+import "../assets/css/Chatbot.css";
 
 export default function Chatbot() {
   useEffect(() => {
+    // 중복 초기화 방지 플래그 확인
     if (window.webchatInitialized) {
       console.log("⚠️ WebChat 이미 초기화됨, 중복 실행 방지");
       return;
     }
 
     const initChat = () => {
-      if (window.WebChat && typeof window.WebChat.default === "function") {
+      if (
+        window.WebChat &&
+        typeof window.WebChat.default === "function"
+      ) {
         window.WebChat.default({
           selector: "#chatbot",
           initPayload: "/greet",
           socketUrl: "http://localhost:5005",
           socketPath: "/socket.io/",
-          title: "챗봇",
+          title: "1D CLASS 상담봇",
+          // subtitle: "무엇이든 물어보세요!",
           customData: { language: "ko" },
           params: { storage: "session" },
         });
-
         window.webchatInitialized = true;
 
         setTimeout(() => {
@@ -27,40 +31,18 @@ export default function Chatbot() {
           const chatDiv = document.getElementById("chatbot");
           if (chatWidget && chatDiv && chatWidget.parentNode !== chatDiv) {
             chatDiv.appendChild(chatWidget);
-            console.log("✅ 챗봇 위치를 #chatbot 컨테이너 안으로 이동 완료");
+            console.log("✅ 챗봇 위치를 #chat 컨테이너 안으로 이동 완료");
           }
-
-          // ✅ 항상 입력창 placeholder를 감시하고 적용
-          const observer = new MutationObserver(() => {
-            const input = document.querySelector(".rw-new-message");
-            if (input && input.placeholder !== "메시지를 입력해주세요") {
-              input.placeholder = "메시지를 입력해주세요";
-              console.log("🔁 placeholder 갱신됨");
-            }
-          });
-
-          observer.observe(document.body, {
-            childList: true,
-            subtree: true,
-          });
-
-          // 👇 추가로, 챗봇 아이콘 클릭 시에도 placeholder 재설정 시도
-          const openButton = document.querySelector(".rw-launcher");
-          if (openButton) {
-            openButton.addEventListener("click", () => {
-              setTimeout(() => {
-                const input = document.querySelector(".rw-new-message");
-                if (input) input.placeholder = "메시지를 입력해주세요";
-              }, 300);
-            });
-          }
-        }, 300);
+        }, 100);
       } else {
         console.error("❌ WebChat 초기화 함수가 준비되지 않았습니다.", window.WebChat);
       }
     };
 
-    if (window.WebChat && typeof window.WebChat.default === "function") {
+    if (
+      window.WebChat &&
+      typeof window.WebChat.default === "function"
+    ) {
       console.log("⚠️ WebChat 이미 로드됨 (즉시 실행)");
       initChat();
       return;
@@ -87,9 +69,10 @@ export default function Chatbot() {
       if (existing) {
         document.body.removeChild(existing);
       }
+      // 플래그 초기화 (필요하면 해제)
       window.webchatInitialized = false;
     };
   }, []);
 
-  return <div id="chatbot" />;
+  return <div id="chatbot"/>;
 }

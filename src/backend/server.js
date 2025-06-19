@@ -112,6 +112,31 @@ app.post('/api/login', (req, res) => {
   });
 });
 
+// 상품 리스트
+app.get('/api/products', (req, res) => {
+  const sql = `
+    SELECT p.*, 
+      GROUP_CONCAT(pt.tag) AS tags
+    FROM products p
+    LEFT JOIN product_tags pt ON p.id = pt.product_id
+    GROUP BY p.id
+  `;
+
+  connection.query(sql, (err, results) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("DB 오류");
+    }
+
+    const products = results.map(p => ({
+      ...p,
+      tag: p.tags ? p.tags.split(',') : []
+    }));
+
+    res.json(products);
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`서버 실행 중 http://localhost:${PORT}`);
 });
