@@ -23,6 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
+.env
+
 # Python 가상환경
 venv/
 rasa-env/
