@@ -1,5 +1,9 @@
 # 1:D CLASS
 
+### backend 서버 실행
+
+1. `node server.js`로 서버 실행
+
 ### 가상환경 생성 및 챗봇 활성화
 
 1. cmd
