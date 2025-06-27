@@ -1,5 +1,6 @@
 #login {
-  
+  height: calc(100% - 230px);
+  min-height: 0;
 }
 
 #login .wrap {
