@@ -1,44 +1,45 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# Python 가상환경
-venv/
-rasa-env/
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+pip-wheel-metadata/
 
-# Rasa 모델 파일 (용량 큼)
-models/
+# Virtual environments
+env/
+venv/
+ENV/
+.venv/
 
-# 로그 파일
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Logs
 *.log
 
-#캐시 파일
-.rasa/
+# Rasa model files
+models/*.tar.gz
 
-# 환경설정 파일 (API 키 등 민감 정보)
-# credentials.yml
-# endpoints.yml
-src/backend/.env
+# Rasa tracker store (if using SQLite)
+tracker.db
+
+# Rasa cache folders
+chatbot/.cache/
+chatbot/.rasa/cache/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints
+
+# Environment variables
+.env
+
+# VSCode / IDE settings
+.vscode/
+.idea/
+
+chatbot
+rasa-env
