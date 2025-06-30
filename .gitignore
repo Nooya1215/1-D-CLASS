@@ -22,7 +22,8 @@ Thumbs.db
 *.log
 
 # Rasa model files
-models/*.tar.gz
+# models/*.tar.gz
+chatbot.zip
 
 # Rasa tracker store (if using SQLite)
 tracker.db
