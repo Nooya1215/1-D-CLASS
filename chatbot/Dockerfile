@@ -2,12 +2,11 @@ FROM rasa/rasa:3.6.16-full
 
 WORKDIR /app
 
-# 소스코드 + 이미 학습된 models 복사
-COPY . /app
+# BuildKit이 켜진 상태에서 한 번만 복사하면서 권한 설정까지 같이 처리
+COPY --chown=root:root --chmod=755 . /app
 
-# 권한 문제 방지 (docker buildkit 사용)
-# BuildKit 활성화: DOCKER_BUILDKIT=1 docker build ...
-COPY --chmod=644 . /app
+# models 폴더에 대해 별도로 읽기/쓰기 권한 확실히 부여
+RUN chmod -R u+rw /app/models
 
-# train 단계는 생략
+# train 단계 없이 바로 실행
 CMD ["run", "--enable-api", "--cors", "*", "--debug"]
