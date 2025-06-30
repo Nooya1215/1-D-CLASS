@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import WishBtn from './WishBtn.jsx';
+import useLanguage from '../hooks/useLanguage';
 
 const Card = ({ product, rank }) => {  // rank 추가 받기
+  const { t, currentLang, toggleLanguage } = useLanguage();
   return (
     <li>
       <article className='best-info'>
@@ -25,8 +27,8 @@ const Card = ({ product, rank }) => {  // rank 추가 받기
           <div className="price">
             <span className='discount'>{Math.round((1 - product.discount) * 100)}%</span>
             <p className="p">
-              <span>{product.price.toLocaleString()}원</span>
-              {Math.round(product.price * product.discount).toLocaleString()}원
+              <span>{product.price.toLocaleString()}{t('won')}</span>
+              {Math.round(product.price * product.discount).toLocaleString()}{t('won')}
             </p>
           </div>
         </Link>

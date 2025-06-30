@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import "../assets/css/faq.css";
 import FaqList from '../components/FaqList';
+import useLanguage from '../hooks/useLanguage';
 
 export default function Faq() {
+  const { t, currentLang, toggleLanguage } = useLanguage();
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -61,14 +64,14 @@ export default function Faq() {
         <div className="wrap">
           <div className='faq-top'>
             <h2 className="h2">FAQ</h2>
-            <a href="#" className='faq-btn'>1:1 문의하기</a>
+            <a href="#" className='faq-btn'>{t('inquiry')}</a>
           </div>
           <ul className='faq-list'>
-            <li><a href="#faqList" className='active'>이용 관련</a></li>
-            <li><a href="#">취소 및 환불 관련</a></li>
-            <li><a href="#">클래스 관련</a></li>
-            <li><a href="#">개인 메뉴 관련</a></li>
-            <li><a href="#">기타 시스템 및 정책</a></li>
+            <li><a href="#faqList" className='active'>{t('usage')}</a></li>
+            <li><a href="#">{t('refund')}</a></li>
+            <li><a href="#">{t('class')}</a></li>
+            <li><a href="#">{t('menu')}</a></li>
+            <li><a href="#">{t('system')}</a></li>
           </ul>
         </div>  
       </div>

@@ -1,28 +1,34 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import useLanguage from '../hooks/useLanguage';
 import "../assets/css/category.css";
 
-const categories = ['반려동물', '뷰티', '스포츠', '쿠킹', '전체'];
+const categories = [
+  { key: 'pet', id: '반려동물' },
+  { key: 'beauty', id: '뷰티' },
+  { key: 'sports', id: '스포츠' },
+  { key: 'cooking', id: '쿠킹' },
+  { key: 'all', id: '전체' },
+];
 
 const CateBtn = () => {
-  const navigate = useNavigate();
+  const { t, navigateWithLang } = useLanguage();
 
-  const handleClick = (category) => {
-    if (category === '전체') {
-      navigate('/products/all');
+  const handleClick = (categoryKey) => {
+    if (categoryKey === 'all') {
+      navigateWithLang('/products/all');
     } else {
-      navigate(`/products/${category}`);
+      navigateWithLang(`/products/${categoryKey}`);
     }
   };
 
   return (
     <section id="category">
       <div className="wrap">
-          {categories.map((cat) => (
-            <button key={cat} onClick={() => handleClick(cat)}>
-              {cat}
-            </button>
-          ))}
+        {categories.map(({ key }) => (
+          <button key={key} onClick={() => handleClick(key)}>
+            {t(`categories.${key}`)}
+          </button>
+        ))}
       </div>
     </section>
   );

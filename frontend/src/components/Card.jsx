@@ -1,9 +1,10 @@
-//\src\components\Card.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import WishBtn from './WishBtn.jsx';
+import useLanguage from '../hooks/useLanguage';
 
 const Card = ({ product }) => {
+  const { t, currentLang, toggleLanguage } = useLanguage();
   return (
     <li className='relative'>
       <article>
@@ -27,7 +28,7 @@ const Card = ({ product }) => {
               <p className='wish'>{product.wishCount}</p>
             </div>
             <div className='price'>
-              <p>{product.price.toLocaleString()}원</p>
+              <p>{product.price.toLocaleString()}{t('won')}</p>
             </div>         
             <div className="tags">
               {Array.isArray(product.tag) && product.tag.map((tag, index) => (

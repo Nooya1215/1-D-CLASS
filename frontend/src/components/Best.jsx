@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';            // axios 임포트 추가
 import CardBest from '../components/CardBest';
+import useLanguage from '../hooks/useLanguage';
 import "../assets/css/best.css";
 
 export default function Best() {
   const [bestProducts, setBestProducts] = useState([]);
+  const { t, currentLang, toggleLanguage } = useLanguage();
 
   useEffect(() => {
     axios.get('http://localhost:8080/api/products')  // 백엔드 API 호출
@@ -22,7 +24,7 @@ export default function Best() {
   return (
     <section id="best">
       <div className="wrap">
-        <h2 className="h2">Best 클래스</h2>
+        <h2 className="h2">{t('best')}</h2>
         <ul className='best-list'>
           {bestProducts.map((product, index) => (
             <CardBest key={product.id} product={product} rank={index + 1} />

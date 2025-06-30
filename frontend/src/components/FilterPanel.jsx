@@ -95,25 +95,7 @@ const FilterPanel = ({ onApply, onReset, selectedFilters }) => {
           </button>
         ))}
       </div>
-
-      {/* <div className="filter-group">
-        <h4>인원</h4>
-        {persons.map((person) => (
-          <button
-            key={person}
-            className={filters.person === person ? 'active' : ''}
-            onClick={() =>
-              setFilters((prev) => ({
-                ...prev,
-                person: prev.person === person ? '' : person
-              }))
-            }          
-          >
-            {person}
-          </button>
-        ))}
-      </div> */}
-
+      
       <div className="filter-group">
         <h4>태그</h4>
         {tags.map((tag) => (

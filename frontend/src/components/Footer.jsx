@@ -1,15 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useLanguage from '../hooks/useLanguage';
 import "../assets/css/footer.css";
 
 export default function Footer() {
+  const { t, currentLang, toggleLanguage } = useLanguage();
+
   return (
     <footer id="footer">
       <div className="wrap">
         <div className='footer-logo'>
           <div>
-            <h2 className="h2">1:D CLASS</h2>
-            <p className="p">감성을 담은 원데이 클래스 플랫폼입니다.</p>
+            <h2 className="h2">{t('title')}</h2>
+            <p className="p">{t('footertitle')}</p>
           </div>
         </div>
         <div className='footer-info'>
@@ -31,9 +34,9 @@ export default function Footer() {
         </div>
         <div className='footer-faq'>
           <div>
-            <h3 className="h3">도움이 필요하신가요?</h3>
-            <Link to="/faq">FAQ / 1:1 문의</Link>
-            <p className='p'>평일: 10:00 ~ 20:00 (주말, 공휴일 제외)</p>
+            <h3 className="h3">{t('footerhelp')}</h3>
+            <Link to={`/${currentLang}/faq`}>{t('faqinquiry')}</Link>
+            <p className='p'>{t('footertime')}</p>
           </div>
         </div>
       </div>

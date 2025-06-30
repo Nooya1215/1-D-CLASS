@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';  // axios 임포트 추가
 import Card from '../components/Card';
+import useLanguage from '../hooks/useLanguage';
 import "../assets/css/new.css";
 
 export default function New() {
   const [newProducts, setNewProducts] = useState([]);
+  const { t, currentLang, toggleLanguage } = useLanguage();
 
   useEffect(() => {
     axios.get('http://localhost:8080/api/products')  // 백엔드 API 주소
@@ -24,7 +26,7 @@ export default function New() {
   return (
     <section id="new">
       <div className="wrap">
-        <h2 className="h2">NEW 클래스</h2>
+        <h2 className="h2">{t('new')}</h2>
         <ul className='new-list'>
           {newProducts.map((product) => (
             <Card key={product.id} product={product} />
