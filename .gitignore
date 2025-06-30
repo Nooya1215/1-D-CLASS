@@ -42,5 +42,5 @@ chatbot/.rasa/cache/
 .vscode/
 .idea/
 
-chatbot
+# chatbot
 rasa-env
