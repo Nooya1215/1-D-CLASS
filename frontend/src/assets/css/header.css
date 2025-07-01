@@ -56,8 +56,10 @@ header .wrap form button {
 }
 
 header .wrap .gnb {
+  width: 240px;
   display: flex;
   align-items: center;
+  justify-content: end;
   gap: 20px;
 }
 
