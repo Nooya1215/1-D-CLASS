@@ -5,12 +5,15 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from "dotenv";
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
 const PORT = process.env.PORT || 8080;
 const app = express();
 
+app.use(cookieParser());
 app.use(cors({
   origin: [
     'http://localhost:5173',
@@ -19,15 +22,12 @@ app.use(cors({
   methods: ["GET", "POST"],
   credentials: true
 }));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'src', 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 const connection = mysql.createConnection({
@@ -45,71 +45,104 @@ connection.connect(err => {
   console.log('DB 연결 성공');
 });
 
-// 회원가입 라우터
+// 회원가입
 app.post('/api/sign', async (req, res) => {
   const { userid, email, password } = req.body;
-
   if (!userid || !email || !password) {
-    return res.status(400).send("모든 항목을 입력해주세요.");
+    return res.status(400).json({ message: "모든 항목을 입력해주세요." });
   }
 
-  const checkSql = `SELECT * FROM users WHERE userid = ?`;
-  connection.query(checkSql, [userid], async (err, result) => {
-    if (err) return res.status(500).send("DB 오류");
+  connection.query(
+    'SELECT * FROM users WHERE userid = ?',
+    [userid],
+    async (err, results) => {
+      if (err) return res.status(500).json({ message: "DB 오류" });
+      if (results.length > 0) return res.status(409).json({ message: "이미 사용 중인 아이디입니다." });
 
-    if (result.length > 0) {
-      return res.status(409).send("이미 사용 중인 아이디입니다.");
+      try {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        connection.query(
+          'INSERT INTO users (userid, email, password) VALUES (?, ?, ?)',
+          [userid, email, hashedPassword],
+          (err) => {
+            if (err) return res.status(500).json({ message: "회원가입 실패" });
+            res.json({ message: "회원가입 성공" });
+          }
+        );
+      } catch {
+        res.status(500).json({ message: "서버 오류" });
+      }
     }
-
-    try {
-      const hashedPassword = await bcrypt.hash(password, 10);
-
-      const insertSql = `INSERT INTO users (userid, email, password) VALUES (?, ?, ?)`;
-      connection.query(insertSql, [userid, email, hashedPassword], (err) => {
-        if (err) return res.status(500).send("회원가입 실패");
-
-        // 성공 시 텍스트 메시지 응답
-        res.status(200).send("회원가입 성공!");
-      });
-    } catch {
-      res.status(500).send("서버 오류");
-    }
-  });
+  );
 });
 
-// 로그인 라우터
+// 로그인
 app.post('/api/login', (req, res) => {
   const { useridOrEmail, password } = req.body;
-
   if (!useridOrEmail || !password) {
-    return res.status(400).send('아이디(또는 이메일)와 비밀번호를 입력하세요.');
+    return res.status(400).json({ message: '아이디(또는 이메일)와 비밀번호를 입력하세요.' });
   }
 
-  // 이메일인지 아이디인지 간단 판단
-  const isEmail = useridOrEmail.includes('@');
-  const sql = isEmail
+  const sql = useridOrEmail.includes('@')
     ? 'SELECT * FROM users WHERE email = ?'
     : 'SELECT * FROM users WHERE userid = ?';
 
   connection.query(sql, [useridOrEmail], async (err, results) => {
-    if (err) return res.status(500).send('DB 오류');
-
+    if (err) return res.status(500).json({ message: 'DB 오류' });
     if (results.length === 0) {
-      return res.status(401).send('가입되지 않은 아이디 또는 이메일입니다.');
+      return res.status(401).json({ message: '가입되지 않은 아이디 또는 이메일입니다.' });
     }
 
     const user = results[0];
     try {
       const match = await bcrypt.compare(password, user.password);
-      if (match) {
-        return res.send('로그인 성공');
-      } else {
-        return res.status(401).send('비밀번호가 틀렸습니다.');
-      }
+      if (!match) return res.status(401).json({ message: '비밀번호가 틀렸습니다.' });
+
+      const token = jwt.sign(
+        { userid: user.userid, id: user.id },
+        process.env.JWT_SECRET,
+        { expiresIn: '1d' }
+      );
+
+      res.cookie('token', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict',
+        maxAge: 24 * 60 * 60 * 1000,
+        path: '/',
+      });
+
+      res.json({ message: '로그인 성공' });
     } catch {
-      return res.status(500).send('서버 오류');
+      res.status(500).json({ message: '서버 오류' });
     }
   });
+});
+
+// 로그인 상태 확인
+app.get('/api/auth/check', (req, res) => {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.status(401).json({ loggedIn: false, message: '토큰이 없습니다.' });
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ loggedIn: false, message: '유효하지 않은 토큰입니다.' });
+    }
+    res.json({ loggedIn: true, userid: decoded.userid, id: decoded.id });
+  });
+});
+
+// 로그아웃
+app.post('/api/logout', (req, res) => {
+  res.clearCookie('token', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
+    path: '/',
+  });
+  res.json({ message: '로그아웃 성공' });
 });
 
 // 상품 리스트

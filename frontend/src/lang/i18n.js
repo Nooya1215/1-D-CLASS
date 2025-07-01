@@ -5,12 +5,18 @@ const resources = {
   ko: {
     translation: {
       // header
-      title: "1:D CLASS",
-      wishlist: "찜",
-      login: "로그인",
-      language: "언어",
-      darkMode: "다크모드",
-      menu: "메뉴",
+      "title": "원데이 클래스 플랫폼",
+      "wishlist": "관심 목록",
+      "login": "로그인",
+      "mypage": "마이페이지",
+      "darkMode": "다크 모드",
+      "menu": "메뉴",
+      "logout": "로그아웃",
+
+      // mypage
+      "mypageTitle": "마이페이지",
+      "welcomeMessage": "환영합니다! 로그인한 사용자만 볼 수 있는 임시 마이페이지입니다.",
+      "goHome": "홈으로 이동",
 
       // new
       new: "NEW 클래스",
@@ -210,12 +216,18 @@ const resources = {
   en: {
     translation: {
       // header
-      title: "1:D CLASS",
-      wishlist: "Wishlist",
-      login: "Login",
-      language: "Language",
-      darkMode: "Dark Mode",
-      menu: "Menu",
+      "title": "1:D Class",
+      "wishlist": "Wish List",
+      "login": "Login",
+      "mypage": "My Page",
+      "darkMode": "Dark Mode",
+      "menu": "Menu",
+      "logout": "Logout",
+
+      // mypage
+      "mypageTitle": "My Page",
+      "welcomeMessage": "Welcome! This is a temporary My Page for logged-in users only.",
+      "goHome": "Go to Home",
 
       // new
       new: "NEW Class",

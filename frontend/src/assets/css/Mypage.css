@@ -1,0 +1,28 @@
+#mypage .wrap {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+#mypage h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+#mypage p {
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+#mypage button {
+  padding: 0.5rem 1rem;
+  background: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#mypage button:hover {
+  background: #555;
+}

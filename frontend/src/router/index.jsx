@@ -3,9 +3,10 @@ import { Routes, Route, Navigate, useParams } from 'react-router-dom';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Sign from '../pages/Sign';
+import Mypage from '../pages/Mypage';
 import ProductList from '../pages/ProductList';
-import Faq from '../pages/Faq';
 import WishListPage from '../pages/WishListPage';
+import Faq from '../pages/Faq';
 
 
 // ✅ 언어 코드별 내부 라우팅
@@ -21,12 +22,13 @@ function LanguageRoutes() {
   return (
     <Routes>
       <Route path="" element={<Home />} />
-      <Route path="wishlist" element={<WishListPage />} />
       <Route path="login" element={<Login />} />
       <Route path="sign" element={<Sign />} />
+      <Route path="mypage" element={<Mypage />} />
       <Route path="products/:category" element={<ProductList />} />
-      <Route path="faq" element={<Faq />} />
       <Route path="*" element={<Navigate to={`/${lang}`} replace />} />
+      <Route path="wishlist" element={<WishListPage />} />
+      <Route path="faq" element={<Faq />} />
     </Routes>
   );
 }
