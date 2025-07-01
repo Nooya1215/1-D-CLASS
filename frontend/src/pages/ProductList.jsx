@@ -1,17 +1,29 @@
-// D:\studio3\1-D-CLASS\src\pages\ProductList.jsx
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';                      // ← axios 추가
+import axios from 'axios';
 import FilterPanel from '../components/FilterPanel';
 import Card from '../components/Card';
+import useLanguage from '../hooks/useLanguage';
 import '../assets/css/card-basic.css';
 
 const ProductList = () => {
-  const { category } = useParams();
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const { t, currentLang } = useLanguage();
+  const { category: rawCategory } = useParams();
+
+  /** 문자열 정규화 (디코드+트림+소문자) */
+  const normalize = (str) =>
+    str ? decodeURIComponent(str).trim().toLowerCase() : '';
+
+  /** "all"/"전체"를 모두 처리하는 버전 */
+  const normalizeCategory = (cat) => {
+    const decoded = normalize(cat);
+    if (decoded === 'all' || decoded === '전체') return '';
+    return decoded;
+  };
+
+  /** 초기 카테고리 상태값 */
   const [filters, setFilters] = useState({
-    category: category === '전체' ? '' : category || '',
+    category: normalizeCategory(rawCategory),
     day: '',
     level: '',
     person: '',
@@ -19,65 +31,109 @@ const ProductList = () => {
     priceRange: [0, 100000],
   });
 
-  // → ① 백엔드 API 에서 상품 가져오기
-  useEffect(() => {
-    axios.get('http://localhost:8080/api/products', { withCredentials: true })
-      .then(res => {
-        setProducts(res.data);
-      })
-      .catch(err => {
-        console.error('상품 로딩 실패:', err);
-      });
-  }, []);
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
-  // 카테고리 URL 변경 시 필터 동기화
+  /** 언어별 필드 선택 */
+  const getLocalized = (ko, en) => (currentLang === 'en' ? en : ko);
+
+  /** 상품 데이터 최초 로드 */
   useEffect(() => {
-    setFilters(prev => ({
+    axios
+      .get('http://localhost:8080/api/products', { withCredentials: true })
+      .then((res) => setProducts(res.data))
+      .catch((err) =>
+        console.error(t('product_load_fail') || '상품 로딩 실패:', err)
+      );
+  }, [t]);
+
+  /** 언어 또는 URL category 변경 시 카테고리 필터 동기화 */
+  useEffect(() => {
+    setFilters((prev) => ({
       ...prev,
-      category: category === 'all' ? '' : category || '',
+      category: normalizeCategory(rawCategory),
     }));
-  }, [category]);
+  }, [rawCategory]);
 
-  // ② products 또는 filters 변경되면 filteredProducts 재계산
+  /** 필터링 처리 */
   useEffect(() => {
     let filtered = [...products];
 
+    // 카테고리 필터
     if (filters.category) {
-      filtered = filtered.filter(p => p.category === filters.category);
+      filtered = filtered.filter((p) => {
+        const catKo = normalize(p.category_ko);
+        const catEn = normalize(p.category_en);
+        return filters.category === catKo || filters.category === catEn;
+      });
     }
+
+    // 요일 필터
     if (filters.day) {
-      filtered = filtered.filter(p => p.day === filters.day);
-    }
-    if (filters.level) {
-      filtered = filtered.filter(p => p.level === filters.level);
-    }
-    if (filters.person && filters.person !== '선택안함') {
-      const num = Number(filters.person.replace(/[^0-9]/g, ''));
-      filtered = filters.person.endsWith('명이상')
-        ? filtered.filter(p => p.person >= num)
-        : filtered.filter(p => p.person === num);
-    }
-    if (filters.tag.length > 0) {
-      filtered = filtered.filter(p =>
-        filters.tag.every(t => Array.isArray(p.tag) && p.tag.includes(t))
+      filtered = filtered.filter(
+        (p) =>
+          normalize(getLocalized(p.day_ko, p.day_en)) ===
+          normalize(filters.day)
       );
     }
+
+    // 난이도 필터
+    if (filters.level) {
+      filtered = filtered.filter(
+        (p) =>
+          p.level?.trim().toLowerCase() ===
+          filters.level.trim().toLowerCase()
+      );
+    }
+
+    // 인원 필터
+    if (filters.person && filters.person !== t('filter.no_selection')) {
+      const num = Number(filters.person.replace(/[^0-9]/g, ''));
+      const isMoreThan =
+        filters.person.endsWith(
+          currentLang === 'en' ? 'persons' : '명이상'
+        );
+      filtered = filtered.filter((p) =>
+        isMoreThan ? p.person >= num : p.person === num
+      );
+    }
+
+    // 태그 필터
+    if (filters.tag.length > 0) {
+      filtered = filtered.filter((p) =>
+        filters.tag.every((tg) =>
+          Array.isArray(p.tag)
+            ? p.tag.some(
+                (tagObj) =>
+                  normalize(tagObj.tag_ko) === normalize(tg) ||
+                  normalize(tagObj.tag_en) === normalize(tg)
+              )
+            : false
+        )
+      );
+    }
+
+    // 가격 범위 필터
     filtered = filtered.filter(
-      p => p.price >= filters.priceRange[0] && p.price <= filters.priceRange[1]
+      (p) =>
+        p.price >= filters.priceRange[0] &&
+        p.price <= filters.priceRange[1]
     );
 
     setFilteredProducts(filtered);
-  }, [filters, products]);
+  }, [filters, products, currentLang, t]);
 
-  const handleApply = newFilters => setFilters(newFilters);
-  const handleReset = () => setFilters({
-    category: category === '전체' ? '' : category || '',
-    day: '',
-    level: '',
-    person: '',
-    tag: [],
-    priceRange: [0, 100000],
-  });
+  /** 필터 적용 / 초기화 핸들러 */
+  const handleApply = (newFilters) => setFilters(newFilters);
+  const handleReset = () =>
+    setFilters({
+      category: normalizeCategory(rawCategory),
+      day: '',
+      level: '',
+      person: '',
+      tag: [],
+      priceRange: [0, 100000],
+    });
 
   return (
     <div className="wrap">
@@ -86,15 +142,19 @@ const ProductList = () => {
         onReset={handleReset}
         selectedFilters={filters}
       />
-      <p className='num'>{filteredProducts.length}개의 클래스</p>
+
+      <p className="num">
+        {filteredProducts.length} {t('classes')}
+      </p>
+
       {filteredProducts.length > 0 ? (
         <ul className="product-list-container">
-          {filteredProducts.map(product => (
+          {filteredProducts.map((product) => (
             <Card key={product.id} product={product} />
           ))}
         </ul>
       ) : (
-        <p className='num'>조건에 맞는 상품이 없습니다.</p>
+        <p className="num">{t('no_matching_products')}</p>
       )}
     </div>
   );

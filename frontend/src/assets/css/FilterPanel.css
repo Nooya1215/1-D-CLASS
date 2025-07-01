@@ -22,6 +22,25 @@
   justify-content: center;
 }
 
+.price-range {
+  
+}
+
+.price-range input {
+  color: #000;
+  padding: 5px 7px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.price-range input:focus {
+  outline: none;
+}
+
+.price-range span {
+  margin: 0 10px;
+}
+
 .filter-panel button {
   padding: 2px 16px !important;
   margin: 4px;

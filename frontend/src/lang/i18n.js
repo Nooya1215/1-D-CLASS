@@ -30,6 +30,27 @@ const resources = {
         "all": "전체"
       },
 
+      // product
+      "product_load_fail": "상품 로딩 실패:",
+      "product_load_fail_default": "상품을 불러오지 못했습니다.",
+
+      // filter
+      "filter": {
+        "no_selection": "선택안함",
+        "category": "카테고리",
+        "day": "요일",
+        "level": "난이도",
+        "person": "인원",
+        "tag": "태그",
+        "price": "금액",
+        "apply": "적용하기",
+        "reset": "초기화",
+        "minPrice": "최소금액",
+        "maxPrice": "최고금액"
+      },
+      "classes": "개의 클래스",
+      "no_matching_products": "조건에 맞는 상품이 없습니다.",
+
       // faq
       "inquiry": "1:1 문의하기",
       "usage": "이용 관련",
@@ -186,6 +207,27 @@ const resources = {
         "cooking": "Cooking",
         "all": "All"
       },
+
+      // product
+      "product_load_fail": "Failed to load products:",
+      "product_load_fail_default": "Could not load products.",
+
+      // filter
+      "filter": {
+        "no_selection": "No selection",
+        "category": "Category",
+        "day": "Day",
+        "level": "Level",
+        "person": "Person",
+        "tag": "Tag",
+        "price": "Price",
+        "apply": "Apply",
+        "reset": "Reset",
+        "minPrice": "Min Price",
+        "maxPrice": "Max Price"
+      },
+      "classes": "classes",
+      "no_matching_products": "No matching products.",
 
       // faq
       "inquiry": "1:1 Inquiry",
