@@ -90,6 +90,7 @@
   justify-content: center;
   font-size: 64px;
   font-weight: 400;
+  width: 75px;
 }
 
 #best .wrap .best-list li .best-info a {
@@ -98,7 +99,7 @@
   justify-content: center;
   position: relative;
   padding: 10px;
-  width: 100%;
+  width: 490px;
 }
 
 #best .wrap .best-list li .best-info img:not(.wish-btn img) {

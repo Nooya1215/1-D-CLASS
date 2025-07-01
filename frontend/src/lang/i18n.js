@@ -138,6 +138,25 @@ const resources = {
       "footerhelp": "도움이 필요하신가요?",
       "footertime": "평일: 10:00 ~ 20:00 (주말, 공휴일 제외)",
       "faqinquiry": "FAQ / 1:1 문의",
+
+      // login 
+      "logintitle": "로그인하고 나에게 딱 맞는<br />클래스를 만나보세요",
+      "emailOrIdPlaceholder": "아이디 또는 이메일",
+      "passwordPlaceholder": "비밀번호",
+      "forgotLink": "이메일/비밀번호 찾기",
+      "loginButton": "로그인",
+      "notMemberQuestion": "아직 회원이 아니신가요?",
+      "signupLink": "회원가입",
+
+      // sign
+      "signTitle": "회원가입 페이지",
+      "emailPlaceholder": "이메일",
+      "useridPlaceholder": "아이디",
+      "passwordPlaceholder": "비밀번호",
+      "confirmPasswordPlaceholder": "비밀번호 확인",
+      "signUpButton": "회원가입",
+      "alreadyMemberQuestion": "이미 회원이신가요?",
+      "loginLink": "로그인"
     }
   },
   en: {
@@ -169,6 +188,7 @@ const resources = {
       },
 
       // faq
+      "inquiry": "1:1 Inquiry",
       "usage": "Usage",
       "refund": "Cancellation & Refund",
       "class": "Class Related",
@@ -273,8 +293,27 @@ const resources = {
       // footer
       "footertitle": "A one-day class platform capturing emotion.",
       "footerhelp": "Do you need help?",
-      "footertime": "Weekdays: 10:00 AM – 8:00 PM (Closed on weekends and holidays)",
-      "faqinquiry": "1:1 Inquiry",
+      "footertime": "Weekdays: 10:00 AM - 8:00 PM (Closed on weekends and holidays)",
+      "faqinquiry": "FAQ / 1:1 Inquiry",
+
+      // login
+      "logintitle": "Log in and find the class<br />that’s just right for you",
+      "emailOrIdPlaceholder": "ID or Email",
+      "passwordPlaceholder": "Password",
+      "forgotLink": "Find Email/Password",
+      "loginButton": "Log In",
+      "notMemberQuestion": "Not a member yet?",
+      "signupLink": "Register",
+
+      // sign
+      "signTitle": "Sign Up Page",
+      "emailPlaceholder": "Email",
+      "useridPlaceholder": "Username",
+      "passwordPlaceholder": "Password",
+      "confirmPasswordPlaceholder": "Confirm Password",
+      "signUpButton": "Register",
+      "alreadyMemberQuestion": "Already a member?",
+      "loginLink": "Log In"
     }
   }
 };

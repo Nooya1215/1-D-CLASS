@@ -18,7 +18,7 @@ export default function Header() {
         </form>
         <ul className='gnb'>
           <li><Link to={`/${currentLang}/wishlist`}>{t('wishlist')}</Link></li>
-          <li><Link to={`/${currentLang}/login`}>{t('login') || '로그인'}</Link></li>
+          <li><Link to={`/${currentLang}/login`}>{t('login')}</Link></li>
           <li>
             <button onClick={toggleLanguage}>
               {currentLang === 'ko' ? 'English' : '한국어'}

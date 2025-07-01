@@ -114,26 +114,69 @@ app.post('/api/login', (req, res) => {
 
 // 상품 리스트
 app.get('/api/products', (req, res) => {
-  const sql = `
-    SELECT p.*, 
-      GROUP_CONCAT(pt.tag) AS tags
-    FROM products p
-    LEFT JOIN product_tags pt ON p.id = pt.product_id
-    GROUP BY p.id
+  // 상품 기본 정보 모두 가져오기
+  const productSql = `
+    SELECT
+      id, mainImg,
+      category_ko, category_en,
+      name_ko, name_en,
+      price, discount,
+      day_ko, day_en,
+      level_ko, level_en,
+      person,
+      duration_ko, duration_en,
+      updatedAt,
+      wishCount,
+      reviewCount
+    FROM products
   `;
 
-  connection.query(sql, (err, results) => {
+  connection.query(productSql, (err, products) => {
     if (err) {
       console.error(err);
       return res.status(500).send("DB 오류");
     }
 
-    const products = results.map(p => ({
-      ...p,
-      tag: p.tags ? p.tags.split(',') : []
-    }));
+    if (products.length === 0) {
+      return res.json([]);
+    }
 
-    res.json(products);
+    // 상품 id 배열 추출
+    const productIds = products.map(p => p.id);
+
+    // 해당 상품들 태그 조회
+    const tagSql = `
+      SELECT product_id, tag_ko, tag_en
+      FROM product_tags
+      WHERE product_id IN (?)
+    `;
+
+    connection.query(tagSql, [productIds], (err2, tags) => {
+      if (err2) {
+        console.error(err2);
+        return res.status(500).send("태그 조회 오류");
+      }
+
+      // 상품별 태그 묶기
+      const tagsByProduct = {};
+      tags.forEach(tag => {
+        if (!tagsByProduct[tag.product_id]) {
+          tagsByProduct[tag.product_id] = [];
+        }
+        tagsByProduct[tag.product_id].push({
+          tag_ko: tag.tag_ko,
+          tag_en: tag.tag_en
+        });
+      });
+
+      // 상품에 태그 붙이기
+      const productsWithTags = products.map(product => ({
+        ...product,
+        tag: tagsByProduct[product.id] || []
+      }));
+
+      res.json(productsWithTags);
+    });
   });
 });
 

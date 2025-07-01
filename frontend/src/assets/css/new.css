@@ -102,19 +102,24 @@
   grid-column: 1;
   grid-row: 1;
 }
+
 .cate p {
   height: fit-content;
-  padding: 0 20px;
+  padding: 0 15px;
   border-radius: 15px;
+  font-size: 14px;
 }
+
 .cate .cateP {
   background-color: #f0f0f0;
   border: 1px solid #f0f0f0;
 }
+
 .cate .dayP {
   background-color: #ebfeff;
   border: 1px solid #ebfeff;
 }
+
 .rating {
   display: flex;
   gap: 20px;;
@@ -123,18 +128,22 @@
   grid-column: 2;
   grid-row: 1;
 }
+
 .title {
   grid-column: 1 / span 2;
   grid-row: 2;
 }
+
 .price {
   align-self: center;
   grid-column: 2;
   grid-row: 3;
 }
+
 .tags {
   align-self: center;
 }
+
 .tag {
   height: fit-content;
   padding: 0 15px !important;

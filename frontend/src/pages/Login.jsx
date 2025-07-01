@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import useLanguage from '../hooks/useLanguage';
 import "../assets/css/Login.css";
 
 export default function Login() {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  const { t, currentLang, toggleLanguage } = useLanguage();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,7 +15,7 @@ export default function Login() {
     const password = e.target.password.value;
 
     if (!useridOrEmail || !password) {
-      setMessage('아이디(또는 이메일)와 비밀번호를 모두 입력해주세요.');
+      alert('아이디(또는 이메일)와 비밀번호를 모두 입력해주세요.');
       return;
     }
 
@@ -39,21 +41,28 @@ export default function Login() {
   return (
     <section id="login">
       <div className="wrap">
-        <h2 className="h2">
-          로그인하고 나에게 딱 맞는
-          <br />
-          클래스를 만나보세요
-        </h2>
+        <h2 dangerouslySetInnerHTML={{ __html: t('logintitle') }} />
         <form onSubmit={handleSubmit}>
           {/* <input type="text" name="email" id="email" placeholder="이메일(아이디)" /> */}
-          <input type="text" name="useridOrEmail" id="useridOrEmail" placeholder="아이디 또는 이메일" />
-          <input type="password" name="password" id="password" placeholder="비밀번호" />
-          <Link to="">이메일/비밀번호 찾기</Link>
-          <button type="submit">로그인</button>
+          <input
+            type="text"
+            name="useridOrEmail"
+            id="useridOrEmail"
+            placeholder={t('emailOrIdPlaceholder')}
+          />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder={t('passwordPlaceholder')}
+          />
+          <Link to="">{t('forgotLink')}</Link>
+          <button type="submit">{t('loginButton')}</button>
         </form>
         {message && <p className="message">{message}</p>}
         <p className="p">
-          아직 회원이 아니신가요?&nbsp;<Link to="/sign">회원가입</Link>
+          {t('notMemberQuestion')}&nbsp;
+          <Link to={`/${currentLang}/sign`}>{t('signupLink')}</Link>
         </p>
       </div>
     </section>
