@@ -18,7 +18,7 @@ export default function Footer() {
         <div className='footer-info'>
           <ul>
             <li>
-              <a href="">깃허브</a>
+              <a href="https://github.com/Nooya1215/1-D-CLASS" target="_blank" rel="noopener noreferrer">깃허브</a>
             </li>
             <li>
               <a href="">노션</a>
