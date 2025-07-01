@@ -145,6 +145,33 @@ app.post('/api/logout', (req, res) => {
   res.json({ message: '로그아웃 성공' });
 });
 
+// profile
+app.get('/api/user/profile', (req, res) => {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.status(401).json({ message: '토큰이 없습니다.' });
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ message: '유효하지 않은 토큰입니다.' });
+    }
+
+    const sql = 'SELECT id, userid, email FROM users WHERE id = ?';
+    connection.query(sql, [decoded.id], (err, results) => {
+      if (err) {
+        return res.status(500).json({ message: 'DB 오류' });
+      }
+      if (results.length === 0) {
+        return res.status(404).json({ message: '사용자 정보를 찾을 수 없습니다.' });
+      }
+
+      res.json(results[0]);
+    });
+  });
+});
+
+
 // 상품 리스트
 app.get('/api/products', (req, res) => {
   // 상품 기본 정보 모두 가져오기
