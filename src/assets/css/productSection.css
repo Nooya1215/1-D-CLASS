@@ -1,0 +1,85 @@
+#section1 {
+  min-height: 450px;
+  height: fit-content;
+}
+
+#section1 h2,
+#section2 h2,
+#section3 h2,
+#section4 h2{
+  opacity: 0;
+}
+
+#section1 p{
+  font-size: 16px;
+  line-height: 1.9;
+  padding-bottom: 30px;
+}
+
+/* 2 */
+#section2.wrap {}
+
+#section2 .curriculum-list {}
+
+#section2 .curriculum-list li {}
+
+#section2 .curriculum-list li strong {
+  display: flex;
+  gap: 10px;
+  font-size: 18px;
+  padding-top: 10px;
+}
+
+#section2 .step-label {
+  color: #FF6F61;
+  font-weight: 700;
+}
+
+#section2 .curriculum-list li p {
+  line-height: 1.8;
+  padding-left: 71px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#section2 .curriculum-list li p::before{
+  content: '';
+  background-color: #000;
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}
+
+/* 3 */
+#section3.wrap {}
+
+#section3 .tutor {
+  background-color: #FFFDFC;
+  border: 1px solid #FFF2EA;
+  border-radius: 20px;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+#section3 .profile {}
+
+#section3 .profile-img {}
+
+#section3 .basic-info {}
+
+#section3 .name {}
+
+#section3 .sns {}
+
+#section3 .sns a {}
+
+#section3 .divider {}
+
+#section3 .qualification {}
+
+#section3 .description {}
+
+#section3 .description p {}
+
