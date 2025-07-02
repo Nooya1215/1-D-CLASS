@@ -93,9 +93,9 @@
   font-size: 64px;
   font-weight: 400;
   font-family: "Pacifico", cursive;
-  padding: 0 5px 0 15px;
   line-height: 1;
   transform: translateY(-5px);
+  width: 80px;
 }
 
 #best .wrap .best-list li .best-info a {

@@ -1,5 +1,5 @@
 #title {
-  height: 550px;
+  height: calc(550px + 60px);
   position: relative;
   overflow: hidden;
   background: #000; /* 이미지 로딩 전 대비 */

@@ -14,7 +14,7 @@ export default function Login() {
     const password = e.target.password.value;
 
     if (!useridOrEmail || !password) {
-      alert('아이디(또는 이메일)와 비밀번호를 모두 입력해주세요.');
+      alert(t('alert.fillAllFields'));
       return;
     }
 
@@ -27,15 +27,17 @@ export default function Login() {
       });
 
       const data = await res.json();
-      setMessage(data.message);
 
-      if (res.ok) {
-        alert('로그인 되었습니다.');
+      if (data.success) {
+        alert(t('alert.loginSuccess'));
         window.dispatchEvent(new Event('loginStatusChanged'));
         navigate(`/${currentLang}`);
+      } else {
+        // 서버에서 보내준 code를 받아서 메시지 출력
+        alert(t(`alert.${data.code}`));
       }
     } catch {
-      setMessage('서버와 통신 중 오류가 발생했습니다.');
+      alert(t('alert.serverError'));
     }
   };
 

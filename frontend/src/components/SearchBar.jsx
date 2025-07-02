@@ -1,8 +1,9 @@
-//D:\1-D-CLASS\src\components\SearchBar.jsx
 import React, { useState } from 'react';
+import useLanguage from '../hooks/useLanguage'; // 경로는 프로젝트에 맞게 수정
 
 const SearchBar = ({ onSearch }) => {
   const [query, setQuery] = useState('');
+  const { t } = useLanguage();
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ const SearchBar = ({ onSearch }) => {
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="클래스를 검색해보세요"
+        placeholder={t('search.placeholder')}
       />
       <button type="submit"></button>
     </form>

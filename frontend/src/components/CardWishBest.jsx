@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useLanguage from '../hooks/useLanguage';
 
 const CardWishBest = ({ product }) => {
+  const { t, currentLang, toggleLanguage } = useLanguage();
+
   return (
     <li className="wish-card">
-      <Link to={`/product/${product.id}`} className="wish-card-link">
+      <Link to={`/${currentLang}/product/${product.id}`} className="wish-card-link">
         <div className="wish-card-img">
           <img src={product.mainImg} alt={product.name} />
         </div>

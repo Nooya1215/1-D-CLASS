@@ -4,6 +4,7 @@ import axios from 'axios';
 import FilterPanel from '../components/FilterPanel';
 import Card from '../components/Card';
 import useLanguage from '../hooks/useLanguage';
+import '../assets/css/Productlist.css';
 import '../assets/css/card-basic.css';
 
 const ProductList = () => {
@@ -136,7 +137,7 @@ const ProductList = () => {
     });
 
   return (
-    <div className="wrap">
+    <div id="product-list" className='wrap'>
       <FilterPanel
         onApply={handleApply}
         onReset={handleReset}
@@ -144,7 +145,7 @@ const ProductList = () => {
       />
 
       <p className="num">
-        {filteredProducts.length} {t('classes')}
+        {filteredProducts.length} {t("classes")}
       </p>
 
       {filteredProducts.length > 0 ? (
@@ -154,7 +155,7 @@ const ProductList = () => {
           ))}
         </ul>
       ) : (
-        <p className="num">{t('no_matching_products')}</p>
+        <p className="num">{t("no_matching_products")}</p>
       )}
     </div>
   );

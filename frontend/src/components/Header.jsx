@@ -46,16 +46,16 @@ export default function Header() {
       });
 
       if (res.ok) {
-        alert('로그아웃 되었습니다.');
+        alert(t('alert.logoutSuccess'));
         setIsLoggedIn(false);
         window.dispatchEvent(new Event('loginStatusChanged'));
         navigate(`/${currentLang}/`);
       } else {
-        alert('로그아웃에 실패했습니다.');
+        alert(t('alert.logoutFail'));
       }
     } catch (error) {
       console.error(error);
-      alert('로그아웃 중 오류가 발생했습니다.');
+      alert(t('alert.logoutError'));
     }
   };
 

@@ -13,6 +13,39 @@ const resources = {
       "menu": "메뉴",
       "logout": "로그아웃",
 
+      // title
+      "title": {
+        "slide1_line1": "취미가",
+        "slide1_line2": "시작되는 하루,",
+        "slide1_line3": "1:D CLASS",
+        "slide1_alt": "취미 클래스 소개 이미지 1",
+
+        "slide2_line1": "1일, 1클래스.",
+        "slide2_line2": "당신만의 취향을",
+        "slide2_line3": "찾는 시간",
+        "slide2_alt": "취미 클래스 소개 이미지 2",
+
+        "slide3": "지금, 나를 위한 시간을 열어보세요",
+        "slide3_alt": "취미 클래스 소개 이미지 3"
+      },
+
+      // search
+      "search": {
+        "placeholder": "클래스를 검색해보세요"
+      },
+
+      "alert": {
+        "fillAllFields": "모든 항목을 입력해주세요.",
+        "loginSuccess": "로그인 되었습니다.",
+        "serverError": "서버 오류가 발생했습니다.",
+        "dbError": "데이터베이스 오류가 발생했습니다.",
+        "userNotFound": "가입되지 않은 아이디 또는 이메일입니다.",
+        "wrongPassword": "비밀번호가 틀렸습니다.",
+        "logoutSuccess": "로그아웃 되었습니다.",
+        "logoutFail": "로그아웃에 실패했습니다.",
+        "logoutError": "로그아웃 중 오류가 발생했습니다."
+      },
+
       // mypage
       "mypageTitle": "마이페이지",
       "welcomeMessage": "환영합니다! 로그인한 사용자만 볼 수 있는 임시 마이페이지입니다.",
@@ -223,6 +256,39 @@ const resources = {
       "darkMode": "Dark Mode",
       "menu": "Menu",
       "logout": "Logout",
+
+      // title
+      "title": {
+        "slide1_line1": "A day",
+        "slide1_line2": "that starts with a hobby,",
+        "slide1_line3": "1:D CLASS",
+        "slide1_alt": "Hobby class introduction image 1",
+
+        "slide2_line1": "1 day, 1 class.",
+        "slide2_line2": "Find your own taste",
+        "slide2_line3": "in this time",
+        "slide2_alt": "Hobby class introduction image 2",
+
+        "slide3": "Now, open time just for you",
+        "slide3_alt": "Hobby class introduction image 3"
+      },
+
+      // search
+      "search": {
+        "placeholder": "Search for a class"
+      },
+
+      "alert": {
+        "fillAllFields": "Please fill in all fields.",
+        "loginSuccess": "Login successful.",
+        "serverError": "Server error.",
+        "dbError": "Database error.",
+        "userNotFound": "ID or email not registered.",
+        "wrongPassword": "Incorrect password.",
+        "logoutSuccess": "You have been logged out.",
+        "logoutFail": "Failed to log out.",
+        "logoutError": "An error occurred during logout."
+      },
 
       // mypage
       "mypageTitle": "My Page",

@@ -80,7 +80,7 @@ app.post('/api/sign', async (req, res) => {
 app.post('/api/login', (req, res) => {
   const { useridOrEmail, password } = req.body;
   if (!useridOrEmail || !password) {
-    return res.status(400).json({ message: '아이디(또는 이메일)와 비밀번호를 입력하세요.' });
+    return res.status(400).json({ success: false, code: 'fillAllFields' });
   }
 
   const sql = useridOrEmail.includes('@')
@@ -88,15 +88,15 @@ app.post('/api/login', (req, res) => {
     : 'SELECT * FROM users WHERE userid = ?';
 
   connection.query(sql, [useridOrEmail], async (err, results) => {
-    if (err) return res.status(500).json({ message: 'DB 오류' });
+    if (err) return res.status(500).json({ success: false, code: 'dbError' });
     if (results.length === 0) {
-      return res.status(401).json({ message: '가입되지 않은 아이디 또는 이메일입니다.' });
+      return res.status(401).json({ success: false, code: 'userNotFound' });
     }
 
     const user = results[0];
     try {
       const match = await bcrypt.compare(password, user.password);
-      if (!match) return res.status(401).json({ message: '비밀번호가 틀렸습니다.' });
+      if (!match) return res.status(401).json({ success: false, code: 'wrongPassword' });
 
       const token = jwt.sign(
         { userid: user.userid, id: user.id },
@@ -112,12 +112,13 @@ app.post('/api/login', (req, res) => {
         path: '/',
       });
 
-      res.json({ message: '로그인 성공' });
+      res.json({ success: true, code: 'loginSuccess' });
     } catch {
-      res.status(500).json({ message: '서버 오류' });
+      res.status(500).json({ success: false, code: 'serverError' });
     }
   });
 });
+
 
 // 로그인 상태 확인
 app.get('/api/auth/check', (req, res) => {
@@ -237,6 +238,28 @@ app.get('/api/products', (req, res) => {
 
       res.json(productsWithTags);
     });
+  });
+});
+
+// 찜
+app.get('/api/products/best', (req, res) => {
+  const sql = `
+    SELECT 
+      id, mainImg, category_ko, category_en, name_ko, name_en,
+      price, discount, day_ko, day_en, level_ko, level_en,
+      person, duration_ko, duration_en, updatedAt,
+      wishCount, reviewCount
+    FROM products
+    ORDER BY wishCount DESC
+    LIMIT 3
+  `;
+
+  connection.query(sql, (err, results) => {
+    if (err) {
+      console.error('찜 많은 상품 조회 오류:', err);
+      return res.status(500).json({ message: '서버 오류' });
+    }
+    res.json(results);
   });
 });
 
