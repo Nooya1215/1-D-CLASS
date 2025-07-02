@@ -1,0 +1,33 @@
+#mypage {
+  height: calc(100% - 230px);
+  min-height: 0;
+  display: flex;
+  align-items: center;
+}
+
+#mypage .wrap {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #ffffff; /* White card */
+  border-radius: 8px;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+#mypage h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#mypage p {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #555;
+}
+
+#mypage .error {
+  color: #e74c3c; /* Red error message */
+  font-size: 14px;
+  margin-top: 10px;
+}

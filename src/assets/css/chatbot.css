@@ -1,0 +1,81 @@
+#rasaWebchatPro {
+  
+}
+
+#rasaWebchatPro div {
+
+}
+
+#rasaWebchatPro div button {
+  width: 60px;
+  height: 60px;
+}
+
+#rasaWebchatPro div button::before {
+  content: '';
+  width: 60px;
+  height: 60px;
+  display: block;
+  background-image: url(../img/svg/chatbot.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#rasaWebchatPro div button div {
+  
+}
+
+#rasaWebchatPro div button div img {
+  display: none;
+}
+
+.rw-close-launcher {
+  display: none;
+}
+
+.rw-send {
+  width: 50px !important;
+  height: 50px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.rw-send::before {
+  content: '';
+  width: 25px !important;
+  height: 25px !important;
+  display: block !important;
+  background-image: url(../img/svg/send.svg) !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  margin-right: 5px !important;
+}
+
+.rw-send svg {
+  display: none;
+}
+
+.rw-header {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+.rw-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rw-title::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-image: url(../img/svg/chatbot.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
