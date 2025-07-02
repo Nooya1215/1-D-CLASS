@@ -88,7 +88,7 @@ const ProductDetail = () => {
             <ul className="product-info">
               <li className="review">{product.reviewCount}</li>
               <li className="wish">{product.wishCount}</li>
-              <li className="place">정보없음</li>
+              <li className="place">서울 성수 / 펫공방 스튜디오</li>
             </ul>
             <div className="date">
               <button onClick={() => setShowCalendar(!showCalendar)}>
@@ -103,7 +103,17 @@ const ProductDetail = () => {
                 />
               )}
             </div>
-            <p className="notice">※ 클래스 신청 전, 확인해주세요!</p>
+            <div className="notice">
+              <strong>클래스 신청 전, 확인해주세요!</strong>
+              <p>제공 키트: 원단, 실, 바늘, 인형 속솜, 삑삑이 부자재 등<br />
+              완성품: 패브릭 장난감 1종 (이름 자수 선택 가능)<br />
+              특징: 완성 후 포장까지 제공 / 반려견용 안전 소재 사용</p>
+
+              <p>실내에서는 음료를 마시거나 시식을 하지 않으며, 공방 테라스<br />
+              에서 시식 및 음료(물포함)를 드실 수 있게 안내해드립니다</p>
+
+              <p>**예약시간에 맞춰서 늦지 않게 도착 부탁바랍니다:)</p>
+            </div>
             <div className="tags">
               {product.tag.map((t, idx) => (
                 <span key={idx}>{t}</span>
