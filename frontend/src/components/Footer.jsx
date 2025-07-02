@@ -11,7 +11,10 @@ export default function Footer() {
       <div className="wrap">
         <div className='footer-logo'>
           <div>
-            <h2 className="h2">{t('title')}</h2>
+            {/* 로고가 텍스트에서 이미지로 바뀜 0702 */}
+            <Link to="/">
+              <img src="/img/logo-g.png" alt="로고" />
+            </Link>
             <p className="p">{t('footertitle')}</p>
           </div>
         </div>
@@ -28,8 +31,24 @@ export default function Footer() {
             </li>
           </ul>
           <p className="p">
-            ⓒ 2025 Team Studio 3 <br />
+            ⓒ 2025 Team Studio 3 <br className='m-br' />
             Designed & Developed by 경유라, 김선우, 양해지
+          </p>
+          <p className='copy'>
+            Uicons by
+            <a href="https://www.fontawesome.com/uicons" target="_blank" rel="noopener noreferrer">
+              Fontawesome
+            </a>
+            {" · "}
+            Images by
+            <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">
+              Unsplash
+            </a>
+            {" · "}
+            Images by
+            <a href="https://www.freepik.com" target="_blank" rel="noopener noreferrer">
+              Freepik
+            </a>
           </p>
         </div>
         <div className='footer-faq'>

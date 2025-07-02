@@ -25,6 +25,7 @@ const CateBtn = () => {
         {categories.map(({ key, ko }) => (
           <button key={key} onClick={() => handleClick(key, ko)}>
             {t(`categories.${key}`)}
+            {/* button-text 못 가지고 옴 */}
           </button>
         ))}
       </div>

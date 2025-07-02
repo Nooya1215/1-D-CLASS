@@ -50,41 +50,32 @@
   grid-row: 1;
 }
 
-.rating .review {
+.rating .review, .rating .wish {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.rating .review::before {
+.rating .review::before, .rating .wish::before {
   content: "";
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   margin-right: 2px;
-  background-image: url(../img/svg/review.svg);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
 }
-
+.rating .review::before {
+  background-image: url(/img/star-s.png);
+}
+.rating .wish::before {
+  background-image: url(/img/bookmark-p.png);
+}
 .rating .wish {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.rating .wish::before {
-  content: "";
-  display: block;
-  width: 20px;
-  height: 20px;
-  margin-right: 2px;
-  transform: translateY(1px);
-  background-image: url(../img/svg/bookmark.svg);
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 
 .title {
@@ -114,19 +105,81 @@
 }
 
 /* wishBtn */
+.card {
+  position: relative;
+}
 .wish-btn {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease !important;
   position: absolute;
   top: 20px;
   right: 20px;
+  width: 26.5px;
+  height: 35px;
   background: none !important;
-  cursor: pointer;
+  border: none;
+  z-index: 5;
+}
+.card-wrap:hover .wish-btn {
+  opacity: 1;
+  pointer-events: auto;
 }
 
+.wish-btn img{
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 0 !important;
+}
 .wish-btn.wished {
   color: red;
 }
+/* .ratingImg */
 
-@media (max-width: 375px) {
+.review {
+  display: flex;
+}
+
+.wish {
+  display: flex;
+}
+
+/* 모바일 */
+@media (max-width:375px) {
+  .wish-btn {
+  width: 19px;
+  height: 25px;
+  opacity: 1;
+}
+
+.review, .wish{
+  align-items: center;
+}
+.rating .review::before,.rating .wish::before{
+  margin-right: 5px;
+}
+
+.rating .review::before {
+  width: 12px;
+  height: 12px;
+  background-image: url(/img/star-s.png);
+}
+
+.rating .wish::before {
+  width: 12px;
+  height: 12px;
+  background-image: url(/img/bookmark-p.png);
+}
+
+}
+
+/* 반응형: 화면이 768px 이하일 때 가로 2개 */
+@media (max-width: 768px) {
+  .product-list-container > li {
+    width: calc(50% - 0.5rem); /* gap 1rem 고려 */
+  }
+}
+/* @media (max-width: 375px) {
   .num {
     margin: 10px 0;
   }
@@ -236,4 +289,4 @@
     width: 25px;
     height: 25px;
   }
-}
+} */

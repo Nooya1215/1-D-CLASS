@@ -1,11 +1,15 @@
 #review {
+  background-image: url(/img/banner.jpg);
   height: 400px;
   min-height: 400px;
-  background-color: #FFF2EA;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 #review .wrap {
   height: 100%;
+  position: relative;
 }
 
 #review .wrap h2 {
@@ -15,10 +19,11 @@
   height: 20%;
   display: flex;
   align-items: center;
+  position: absolute;
 }
 
 #review .wrap .review-list {
-  height: 80%;
+  height: 100%;
 }
 
 #review .wrap .review-list li {
@@ -55,6 +60,11 @@
   margin-bottom: 80px;
 }
 
+#review .slick-slide img{
+  width: 746px;
+  height: 100%;
+}
+
 #review .slick-dots {
   display: flex;
   justify-content: center;
@@ -68,7 +78,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  border: 1.5px solid #f67560 !important;
+  border: 1.5px solid #EAD7CD !important;
   background-color: transparent;
   padding: 0;
   outline: none;
@@ -87,4 +97,39 @@
 
 #review .slick-dots li.slick-active button::before {
   color: transparent;
+}
+@media (max-width: 768px){
+
+#review {
+  height: 345px;
+  min-height: 345px;
+  background-image: url(/img/m-banner.jpg);
+}
+
+#review .wrap {
+  width: 100%;
+}
+
+#review .wrap h2 {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: left;
+  padding-left: 15px;
+}
+
+#review .wrap .review-list {
+  margin-bottom: 0;
+}
+
+#review .slick-slide img{
+  width: 375px;
+  height: 297px;
+  transform: translateY(10px);
+}
+
+#review .slick-dots {
+  gap: 0px;
+  transform: translateY(10px);
+}
+
 }

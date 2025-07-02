@@ -81,6 +81,8 @@ a {
   font-size: 18px;
 }
 
+.brown{ color: #4D2E1C !important;}
+
 .hide {
   display: none;
 }
@@ -92,4 +94,9 @@ a {
 
 .btn {
   font-size: 14px !important;
+}
+
+/* 모바일 */
+@media (max-width: 480px){
+  .wrap{width: 344px;}
 }

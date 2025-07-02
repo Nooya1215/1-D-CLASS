@@ -40,6 +40,7 @@
   color: #fff;
   font-size: 14px;
   font-weight: 700;
+  border-radius: 8px;
 }
 
 #sign .wrap p {
@@ -52,4 +53,36 @@
 #sign .wrap p a {
   color: #727272 !important;
   text-decoration: underline;
+}
+
+/* 반응형 */
+@media (max-width: 768px){
+#sign {
+}
+
+#sign .wrap {
+  width: 290px;
+}
+
+#sign .wrap h2 {
+  margin-bottom: 90px;
+}
+
+#sign .wrap form {
+}
+
+#sign .wrap form input {
+}
+
+#sign .wrap form button {
+  width: 290px;
+}
+
+#sign .wrap p {
+}
+
+#sign .wrap p a {
+}
+
+
 }

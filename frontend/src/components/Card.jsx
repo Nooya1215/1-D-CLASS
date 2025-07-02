@@ -17,7 +17,8 @@ const Card = ({ product }) => {
   return (
     <li className='relative'>
       <article>
-        <Link className="card" to={`/product/${product.id}`}>
+        <WishBtn product={product} />
+        <Link className="card" to={`/${currentLang}/product/${product.id}`}>
           <img 
             src={product.mainImg} 
             alt={getLocalized(product.name_ko, product.name_en) || 'product image'} 
@@ -47,7 +48,7 @@ const Card = ({ product }) => {
           </div>
         </Link>
       </article>
-      <WishBtn product={product} /> 
+       
     </li>
   );
 };

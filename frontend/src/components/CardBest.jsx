@@ -24,7 +24,7 @@ const Card = ({ product, rank }) => {
         />
         <WishBtn className='best-book' product={product} />
         <span className='num'>{rank}</span>
-        <Link className="card" to={`/product/${product.id}`}>
+        <Link className="card" to={`/${currentLang}/product/${product.id}`}>
           <div className='info-top'>
             <div className="tags">
               <span>{getLocalized(product.category_ko, product.category_en)}</span>

@@ -24,7 +24,7 @@ export default function Best() {
   return (
     <section id="best">
       <div className="wrap">
-        <h2 className="h2">{t('best')}</h2>
+        <h2 className="h2 brown">{t('best')}</h2>
         <ul className='best-list'>
           {bestProducts.map((product, index) => (
             <CardBest key={product.id} product={product} rank={index + 1} />

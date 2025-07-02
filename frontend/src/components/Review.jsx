@@ -1,7 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import "../assets/css/review.css";
 
 export default function Review() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     const $ = window.$;
     const $slider = $('.review-list');
@@ -13,12 +21,12 @@ export default function Review() {
     $slider.slick({
       dots: true,
       infinite: true,
-      speed: 500,
+      speed: 800,
       slidesToShow: 1,
       adaptiveHeight: true,
       arrows: false,
       autoplay: true,
-      autoplaySpeed: 2000,
+      autoplaySpeed: 3000,
     });
 
     return () => {
@@ -28,36 +36,25 @@ export default function Review() {
     };
   }, []);
 
+  const banners = [1, 2, 3, 4, 5];
+
   return (
     <section id="review">
       <div className="wrap">
-        <h2 className="h2">REVIEW</h2>
+        <h2 className="h2 brown">REVIEW</h2>
         <ul className='review-list'>
-          <li>
-            <h3 className="h3">우드펜 만들기 클래스</h3>
-            <p className="p">❝ 선생님이 정말 친절하셨어요! ❞ <br />완성작도 너무 만족스럽습니다 :)</p>
-            <span>lee_yurim</span>
-          </li>
-          <li>
-            <h3 className="h3">우드펜 만들기 클래스</h3>
-            <p className="p">❝ 선생님이 정말 친절하셨어요! ❞ <br />완성작도 너무 만족스럽습니다 :)</p>
-            <span>lee_yurim</span>
-          </li>
-          <li>
-            <h3 className="h3">우드펜 만들기 클래스</h3>
-            <p className="p">❝ 선생님이 정말 친절하셨어요! ❞ <br />완성작도 너무 만족스럽습니다 :)</p>
-            <span>lee_yurim</span>
-          </li>
-          <li>
-            <h3 className="h3">우드펜 만들기 클래스</h3>
-            <p className="p">❝ 선생님이 정말 친절하셨어요! ❞ <br />완성작도 너무 만족스럽습니다 :)</p>
-            <span>lee_yurim</span>
-          </li>
-          <li>
-            <h3 className="h3">우드펜 만들기 클래스</h3>
-            <p className="p">❝ 선생님이 정말 친절하셨어요! ❞ <br />완성작도 너무 만족스럽습니다 :)</p>
-            <span>lee_yurim</span>
-          </li>
+          {banners.map((num) => (
+            <li key={num}>
+              <img
+                src={
+                  isMobile
+                    ? `/img/m-banner${num}.png`
+                    : `/img/banner${num}.png`
+                }
+                alt={`리뷰 이미지 ${num}`}
+              />
+            </li>
+          ))}
         </ul>
       </div>
     </section>

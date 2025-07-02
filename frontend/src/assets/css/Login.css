@@ -17,6 +17,7 @@
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 30px;
+  text-align: center;
 }
 
 #login .wrap form {
@@ -65,4 +66,20 @@
 #login .wrap p a {
   color: #727272 !important;
   text-decoration: underline;
+}
+
+/* 반응형 */
+@media (max-width: 768px){
+#login .wrap {
+  width: 290px;
+}
+
+#login .wrap h2 {
+  margin-bottom: 100px;
+}
+
+#login .wrap form button {
+  width: 290px;
+}
+
 }

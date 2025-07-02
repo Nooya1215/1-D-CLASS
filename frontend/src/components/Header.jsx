@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useLanguage from '../hooks/useLanguage';
 import "../assets/css/header.css";
+import MobileMenu from './MobileMenu';
+import SearchBar from './SearchBar';
 
 export default function Header() {
   const { t, currentLang, toggleLanguage } = useLanguage();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const checkLoginStatus = async () => {
     try {
@@ -16,6 +19,16 @@ export default function Header() {
       setIsLoggedIn(res.ok);
     } catch {
       setIsLoggedIn(false);
+    }
+  };
+
+  const handleSearchSubmit = (query) => {
+
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      navigate(`/${currentLang}/search-mobile?search=${encodeURIComponent(query)}`);
+    } else {
+      navigate(`/${currentLang}/search?query=${encodeURIComponent(query)}`);
     }
   };
 
@@ -52,10 +65,7 @@ export default function Header() {
         <Link to={`/${currentLang}`}>
           <h1 className="h1">{t('title')}</h1>
         </Link>
-        <form method="get" action="/search">
-          <input type="search" name="search" id="search" />
-          <button type="submit"></button>
-        </form>
+        <SearchBar onSearch={handleSearchSubmit} />
         <ul className='gnb'>
           <li><Link to={`/${currentLang}/wishlist`}>{t('wishlist')}</Link></li>
           <li>
@@ -78,10 +88,15 @@ export default function Header() {
             <button className='dark'>{t('darkMode')}</button>
           </li>
           <li>
-            <button className='menu'>{t('menu')}</button>
+            <a className="menu-btn" onClick={() => {
+              if (window.innerWidth <= 768) setMenuOpen(true);
+            }}>
+              {t('menu')}
+            </a>
           </li>
         </ul>
       </div>
+      <MobileMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
     </header>
   );
 }

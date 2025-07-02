@@ -1,5 +1,9 @@
 header {
   height: 60px;
+  position: fixed;
+  z-index: 999;
+  background-color: white;
+  width: 100%;
 }
 
 header .wrap {
@@ -30,9 +34,8 @@ header .wrap form {
 
 header .wrap form input {
   width: 100%;
-  height: 100%;
   border-radius: 25px;
-  padding: 25px;
+  padding: 10px 25px;
   border: 1px solid #ccc;
   color: #000;
   font-size: 14px;
@@ -78,6 +81,7 @@ header .wrap .gnb li a {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+  cursor: pointer;
 }
 
 header .wrap .gnb li button {
@@ -111,4 +115,59 @@ header .wrap .gnb li .dark {
 
 header .wrap .gnb li .menu {
   background-image: url(../img/svg/menu.svg);
+}
+
+/* 모바일 */
+@media (max-width: 758px) {
+
+header {
+  height: 56px;
+  width: 100%;
+  overflow: hidden;
+}
+
+header .wrap {
+  width: 344px;
+  margin: 0 auto;
+  max-width: 758px;
+}
+
+header .wrap h1 {
+}
+
+header .wrap form {
+}
+
+header .wrap form input {
+    display: none; /* input 숨겨서, 검색버튼만 보이게 설정*/
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 40px 8px 15px;
+    height: 36px;
+    border-radius: 18px;
+    border: 1px solid #ccc;
+}
+
+header .wrap form input:focus {
+}
+
+header .wrap form button {
+}
+
+header .wrap .gnb {
+}
+
+header .wrap .gnb li {
+}
+
+header .wrap .gnb li a {
+}
+
+header .wrap .gnb li:nth-of-type(n+1):nth-of-type(-n+3) {
+  display: none;
+}
+
+header .wrap .gnb li:nth-of-type(5) a {
+}
+
 }

@@ -25,11 +25,9 @@
   height: fit-content;
 }
 
-#footer .wrap .footer-logo div h2 {
-  color: #3b3b3b;
-  font-size: 32px;
-  font-weight: 900;
-  text-align: left;
+#footer .wrap .footer-logo div img {
+  width: 159px;
+  margin-bottom: 15px;
 }
 
 #footer .wrap .footer-logo div p {
@@ -81,10 +79,29 @@
   background-image: url(../img/svg/figma.svg);
 }
 
+#footer .wrap .footer-info .m-br{
+  display: none;
+}
+
+#footer .wrap .footer-info .copy{
+  font-size: 10px;
+  display: flex;
+  gap: 3px;
+}
+
 #footer .wrap .footer-info p {
   color: #3b3b3b;
   font-size: 13px;
   font-weight: 400;
+  text-align: center;
+  margin-bottom: 5px;
+  line-height: 1.5;
+  font-size: 13px;
+}
+
+#footer .wrap .footer-info .copy a{
+  color: inherit !important;
+  text-decoration: underline;
 }
 
 #footer .wrap .footer-faq {
@@ -125,4 +142,107 @@
   font-size: 11px;
   font-weight: 400;
   text-align: left;
+}
+
+@media (max-width: 758px) {
+  #footer {
+    height: 336px;
+}
+
+#footer .wrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#footer .wrap .footer-logo {
+  order: 1;
+  padding-bottom: 15px;
+}
+
+#footer .wrap .footer-logo div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#footer .wrap .footer-logo div img {
+  width: 125px;
+  margin-bottom: 15px;
+}
+
+#footer .wrap .footer-logo div p {
+  font-size: 12px;
+}
+
+#footer .wrap .footer-info {
+  border: 0;
+  order: 3;
+  padding-top: 15px;
+}
+
+#footer .wrap .footer-info ul {
+  gap: 15px;
+}
+
+#footer .wrap .footer-info ul li {
+  height: 30px;
+  width: 30px;
+}
+
+#footer .wrap .footer-info ul li a {
+}
+
+#footer .wrap .footer-info ul li:nth-of-type(1) a {
+}
+
+#footer .wrap .footer-info ul li:nth-of-type(2) a {
+}
+
+#footer .wrap .footer-info ul li:nth-of-type(3) a {
+}
+
+#footer .wrap .footer-info p {
+  font-size: 12px;
+  margin: 0;
+}
+
+#footer .wrap .footer-info .copy{
+  font-size: 10px;
+  gap: 3px;
+}
+
+#footer .wrap .footer-info .m-br{
+  display: inline-block;
+}
+
+#footer .wrap .footer-faq {
+  order: 2;
+  border-top: 1px solid #929292;
+  border-bottom: 1px solid #929292;
+  width: fit-content;
+  padding: 15px 0;
+}
+
+#footer .wrap .footer-faq div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#footer .wrap .footer-faq div h3 {
+}
+
+#footer .wrap .footer-faq div a {
+}
+
+#footer .wrap .footer-faq div p {
+}
+
 }
