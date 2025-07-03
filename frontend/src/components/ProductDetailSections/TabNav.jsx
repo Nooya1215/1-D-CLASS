@@ -1,14 +1,25 @@
-const TabNav = ({ scrollToSection, isSticky, tabRef }) => {
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+
+export default function TabNav({ scrollToSection }) {
+  const { t } = useTranslation();
+
+  const tabs = [
+    { id: 'section1', labelKey: 'tabNav.classIntro' },
+    { id: 'section2', labelKey: 'tabNav.curriculum' },
+    { id: 'section3', labelKey: 'tabNav.tutorIntro' },
+    { id: 'section4', labelKey: 'tabNav.reviews' },
+  ];
+
   return (
-    <nav ref={tabRef} className={`tab-nav ${isSticky ? 'fixed-tab' : ''}`}>
+    <nav>
       <ul>
-        <li onClick={() => scrollToSection('section1')}>클래스 소개</li>
-        <li onClick={() => scrollToSection('section2')}>커리큘럼</li>
-        <li onClick={() => scrollToSection('section3')}>튜터 소개</li>
-        <li onClick={() => scrollToSection('section4')}>후기</li>
+        {tabs.map(({ id, labelKey }) => (
+          <li key={id} onClick={() => scrollToSection(id)}>
+            {t(labelKey)}
+          </li>
+        ))}
       </ul>
     </nav>
   );
-};
-
-export default TabNav;
+}

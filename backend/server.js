@@ -263,6 +263,64 @@ app.get('/api/products/best', (req, res) => {
   });
 });
 
+// 상품 상세
+app.get('/api/products/:id', (req, res) => {
+  const productId = req.params.id;
+
+  // ① 상품 정보
+  const productSql = `
+    SELECT
+      id, mainImg,
+      category_ko, category_en,
+      name_ko, name_en,
+      price, discount,
+      day_ko, day_en,
+      level_ko, level_en,
+      person,
+      duration_ko, duration_en,
+      updatedAt,
+      wishCount,
+      reviewCount
+    FROM products
+    WHERE id = ?
+  `;
+
+  connection.query(productSql, [productId], (err, results) => {
+    if (err) {
+      console.error('상품 조회 오류:', err);
+      return res.status(500).json({ message: 'DB 오류' });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ message: '상품이 존재하지 않습니다.' });
+    }
+
+    const product = results[0];
+
+    // ② 태그 정보
+    const tagSql = `
+      SELECT tag_ko, tag_en
+      FROM product_tags
+      WHERE product_id = ?
+    `;
+
+    connection.query(tagSql, [productId], (err2, tags) => {
+      if (err2) {
+        console.error('태그 조회 오류:', err2);
+        return res.status(500).json({ message: '태그 조회 오류' });
+      }
+
+      // 결과 형태 맞추기
+      product.tag = tags.map(tag => ({
+        tag_ko: tag.tag_ko,
+        tag_en: tag.tag_en
+      }));
+
+      res.json(product);
+    });
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`서버 실행 중 http://localhost:${PORT}`);
 });

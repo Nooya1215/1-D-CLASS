@@ -1,19 +1,23 @@
+// ProductDetail.jsx
 import React, { useState, useRef, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Calendar from 'react-calendar';
-import productList from '../data/products.json';
 import WishBtn from '../components/WishBtn';
 import Section1 from '../components/ProductDetailSections/Section1';
 import Section2 from '../components/ProductDetailSections/Section2';
 import Section3 from '../components/ProductDetailSections/Section3';
 import Section4 from '../components/ProductDetailSections/Section4';
+import useLanguage from '../hooks/useLanguage';
 import 'react-calendar/dist/Calendar.css';
 import '../assets/css/productDetail.css';
-import '../assets/css/productSection.css'
+import '../assets/css/productSection.css';
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const product = productList.find((item) => item.id === parseInt(id));
+  const { t, currentLang } = useLanguage();
+
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [count, setCount] = useState(1);
   const [selectedDate, setSelectedDate] = useState(null);
   const [showCalendar, setShowCalendar] = useState(false);
@@ -30,13 +34,30 @@ const ProductDetail = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+
+    const fetchProduct = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch(`http://localhost:8080/api/products/${id}`);
+        if (!res.ok) throw new Error(t('productDetail.notFound'));
+        const data = await res.json();
+        setProduct(data);
+      } catch (err) {
+        console.error(err);
+        setProduct(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProduct();
+  }, [id, t]);
 
   const scrollToSection = (id) => {
     const section = sectionRefs[id]?.current;
     if (section) {
-      const headerHeight = 80; // ✅ 헤더 높이
-      const tabHeight = 66;    // ✅ 탭 높이
+      const headerHeight = 80;
+      const tabHeight = 66;
       const scrollY = section.getBoundingClientRect().top + window.pageYOffset - headerHeight - tabHeight;
       window.scrollTo({ top: scrollY, behavior: 'smooth' });
       setActiveTab(id);
@@ -61,34 +82,38 @@ const ProductDetail = () => {
   };
 
   const handlePlus = () => {
-    if (count < product.person) setCount(count + 1);
+    if (product && count < product.person) setCount(count + 1);
   };
 
-  if (!product) return <p>상품을 찾을 수 없습니다.</p>;
+  if (loading) return <p>{t('loading')}</p>;
+  if (!product) return <p>{t('productDetail.notFound')}</p>;
 
   return (
     <>
       <section id="detailTitle">
         <div className="wrap">
           <div className="img">
-            <img src={product.mainImg} alt={product.name} />
+            <img
+              src={product[`mainImg_${currentLang}`] || product.mainImg}
+              alt={product[`name_${currentLang}`] || product.name_ko}
+            />
           </div>
 
           <div className="info">
             <ul>
-              <li>{product.category}</li>
-              <li>{product.duration}</li>
-              <li>{product.level}</li>
-              <li>1~{product.person}명</li>
+              <li>{product[`category_${currentLang}`] || product.category_ko}</li>
+              <li>{product[`duration_${currentLang}`] || product.duration_ko}</li>
+              <li>{product[`level_${currentLang}`] || product.level_ko}</li>
+              <li>{t('productDetail.personCount', { count: product.person })}</li>
             </ul>
           </div>
 
           <div className="reservation">
-            <h2>{product.name}</h2>
+            <h2>{product[`name_${currentLang}`] || product.name_ko}</h2>
             <ul className="product-info">
               <li className="review">{product.reviewCount}</li>
               <li className="wish">{product.wishCount}</li>
-              <li className="place">정보없음</li>
+              <li className="place">{t('productDetail.placeUnknown')}</li>
             </ul>
             <div className="date">
               <button onClick={() => setShowCalendar(!showCalendar)}>
@@ -103,44 +128,62 @@ const ProductDetail = () => {
                 />
               )}
             </div>
-            <p className="notice">※ 클래스 신청 전, 확인해주세요!</p>
+            <p className="notice">{t('productDetail.beforeApplyNotice')}</p>
             <div className="tags">
-              {product.tag.map((t, idx) => (
-                <span key={idx}>{t}</span>
+              {product.tag.map((tObj, idx) => (
+                <span key={idx}>{tObj[`tag_${currentLang}`] || tObj.tag_ko}</span>
               ))}
             </div>
             <div className="person">
-              <span>인원</span>
+              <span>{t('productDetail.person')}</span>
               <button onClick={handleMinus}>-</button>
               <span className="personCount">{count}</span>
               <button onClick={handlePlus}>+</button>
             </div>
-            <p className="price">{(product.price * count).toLocaleString()}원</p>
+            <p className="price">
+              {(product.price * count).toLocaleString()} {t('currencyWon')}
+            </p>
             <div className="btns">
               <WishBtn product={product} iconType="gray" />
-              <button className="faqBtn"></button>
-              <button className="applyBtn">클래스 신청하기</button>
+              <button className="faqBtn">{t('productDetail.faqButton')}</button>
+              <button className="applyBtn">{t('productDetail.applyButton')}</button>
             </div>
           </div>
         </div>
       </section>
-      <div className='detail-body'>
-        {/* ✅ 탭바 (sticky) */}
+
+      <div className="detail-body">
         <div className="tab" ref={tabRef}>
           <nav className="tab-nav">
             <ul>
-              <li className={activeTab === 'section1' ? 'active' : ''} onClick={() => scrollToSection('section1')}>클래스 소개</li>
-              <li className={activeTab === 'section2' ? 'active' : ''} onClick={() => scrollToSection('section2')}>커리큘럼</li>
-              <li className={activeTab === 'section3' ? 'active' : ''} onClick={() => scrollToSection('section3')}>튜터 소개</li>
-              <li className={activeTab === 'section4' ? 'active' : ''} onClick={() => scrollToSection('section4')}>후기</li>
+              <li
+                className={activeTab === 'section1' ? 'active' : ''}
+                onClick={() => scrollToSection('section1')}
+              >
+                {t('productDetail.tabs.intro')}
+              </li>
+              <li
+                className={activeTab === 'section2' ? 'active' : ''}
+                onClick={() => scrollToSection('section2')}
+              >
+                {t('productDetail.tabs.curriculum')}
+              </li>
+              <li
+                className={activeTab === 'section3' ? 'active' : ''}
+                onClick={() => scrollToSection('section3')}
+              >
+                {t('productDetail.tabs.tutor')}
+              </li>
+              <li
+                className={activeTab === 'section4' ? 'active' : ''}
+                onClick={() => scrollToSection('section4')}
+              >
+                {t('productDetail.tabs.reviews')}
+              </li>
             </ul>
           </nav>
         </div>
-
-        {/* ✅ sticky된 tab이 겹치지 않게 높이 보정 */}
         <div style={{ height: '66px' }}></div>
-
-        {/* ✅ 각 섹션 연결 */}
         <Section1 ref={sectionRefs.section1} />
         <Section2 ref={sectionRefs.section2} />
         <Section3 ref={sectionRefs.section3} />

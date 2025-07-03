@@ -72,6 +72,113 @@ const resources = {
       // product
       product_load_fail: "상품 로딩 실패:",
       product_load_fail_default: "상품을 불러오지 못했습니다.",
+      
+      "loading": "로딩 중...",
+      "currencyWon": "원",
+      "productDetail": {
+        "notFound": "상품을 찾을 수 없습니다.",
+        "personCount": "1~{{count}}명",
+        "placeUnknown": "정보없음",
+        "beforeApplyNotice": "※ 클래스 신청 전, 확인해주세요!",
+        "person": "인원",
+        "faqButton": "FAQ",
+        "applyButton": "클래스 신청하기",
+        "tabs": {
+          "intro": "클래스 소개",
+          "curriculum": "커리큘럼",
+          "tutor": "튜터 소개",
+          "reviews": "후기"
+        }
+      },
+
+      "section1": {
+        "title": "클래스 소개",
+        "paragraphs": [
+          "손으로 만드는 첫 장난감, 우리 강아지에게<br />세상에서 단 하나뿐인 장난감을,<br />내 손으로 직접 만들어 강아지에게 선물해보세요.<br />바느질이 서툴러도 괜찮아요.",
+          "폭신한 원단과 안전한 소재로 준비된<br />입문자용 키트를 통해 누구나 쉽게 완성할 수 있어요.",
+          "장난감을 만들며 내 반려견을 더 깊이 이해하고,<br />완성 후에는 선물하는 기쁨까지 함께 경험해보세요.<br />우리 아이가 제일 좋아하는 장난감이 될지도 몰라요!"
+        ]
+      },
+
+      "section3": {
+        "title": "튜터 소개",
+        "altText": "강사 프로필 사진",
+        "name": "펫공방 스튜디오",
+        "instagram": "@_petgram",
+        "youtube": "펫공방채널",
+        "qualification": "✔ 펫푸드 전문가 자격증 (한국반려동물교육협회)",
+        "description": "펫공방스튜디오는 경기 교육청 정식 허가 등록(제 5615-1호) 된 반려동물 수제간식 전문학원으로 원데이 클래스부터 취미반, 자격증반, 창업반, 펫베이커리, 펫케이크, 반려동물 자연식, 반려동물 영양관리사, 펫교감카드(펫타로) 등 다양한 수업을 운영하는 한국반려동물교육협회(KCAEA) 본원 입니다."
+      },
+
+      "curriculum": {
+        "title": "커리큘럼 안내",
+        "step1": {
+          "label": "STEP1.",
+          "title": "클래스 소개 및 아이스브레이킹",
+          "desc1": "강사 및 참여자 간 간단한 자기소개",
+          "desc2": "강아지 장난감 제작 클래스 개요 설명"
+        },
+        "step2": {
+          "label": "STEP2.",
+          "title": "반려견 성향 이해하기 (5분)",
+          "desc1": "활동적인 강아지 vs. 조용한 강아지",
+          "desc2": "어떤 장난감이 적합할지 간단히 알아보기"
+        },
+        "step3": {
+          "label": "STEP3.",
+          "title": "재료 소개 및 도구 사용법 익히기 (10분)",
+          "desc1": "안전한 원단, 충전재, 바느질 키트 소개",
+          "desc2": "기본 바느질 방법 시연"
+        },
+        "step4": {
+          "label": "STEP4.",
+          "title": "장난감 디자인 선택 & 밑그림 그리기 (15분)",
+          "desc1": "준비된 디자인 중 선택 or 자유 디자인",
+          "desc2": "강아지 이름 자수 위치 등 정하기"
+        },
+        "step5": {
+          "label": "STEP5.",
+          "title": "장난감 제작 시작 (60분)",
+          "desc1": "재단, 바느질, 충전재 채우기 등 순차적 제작",
+          "desc2": "강사의 도움 아래 1:1 코칭 진행"
+        },
+        "step6": {
+          "label": "STEP6.",
+          "title": "디테일 마감 및 꾸미기 (15분)",
+          "desc1": "자수 넣기, 리본/태그 부착 등",
+          "desc2": "완성 후 촬영 포인트 잡기"
+        },
+        "step7": {
+          "label": "STEP7.",
+          "title": "완성품 공유 & 포토타임 (10분)",
+          "desc1": "서로 만든 장난감 소개",
+          "desc2": "반려견 사진 or 완성품 인증샷 촬영"
+        },
+        "step8": {
+          "label": "STEP8.",
+          "title": "포장 및 클래스 마무리 (5분)",
+          "desc1": "선물 포장지 제공",
+          "desc2": "후기 작성 안내 및 다음 클래스 소개"
+        }
+      },
+
+      "reviewSection": {
+        "title": "수강후기",
+        "loadMore": "더보기",
+        "alt": {
+          "fullStar": "꽉 찬 별",
+          "emptyStar": "빈 별",
+          "profileImage": "프로필 이미지",
+          "reviewImage": "후기 이미지"
+        }
+      },
+
+      "tabNav": {
+        "classIntro": "클래스 소개",
+        "curriculum": "커리큘럼",
+        "tutorIntro": "튜터 소개",
+        "reviews": "수강후기"
+      },
 
       // filter
       filter: {
@@ -316,6 +423,113 @@ const resources = {
       // product
       product_load_fail: "Failed to load products:",
       product_load_fail_default: "Could not load products.",
+
+      "loading": "Loading...",
+      "currencyWon": "won",
+      "productDetail": {
+        "notFound": "Product not found.",
+        "personCount": "1~{{count}} persons",
+        "placeUnknown": "No information",
+        "beforeApplyNotice": "※ Please check before applying for the class!",
+        "person": "Persons",
+        "faqButton": "FAQ",
+        "applyButton": "Apply for Class",
+        "tabs": {
+          "intro": "Class Introduction",
+          "curriculum": "Curriculum",
+          "tutor": "Tutor Introduction",
+          "reviews": "Reviews"
+        }
+      },
+
+      "section1": {
+        "title": "Class Introduction",
+        "paragraphs": [
+          "Make your dog's very first handmade toy<br />A one-of-a-kind gift just for them,<br />Handcrafted with love by you.<br />Don’t worry if you’re new to sewing.",
+          "With soft fabrics and safe materials,<br />Our beginner-friendly kit lets anyone complete it easily.",
+          "Deepen your bond while making the toy,<br />Then experience the joy of gifting it.<br />It might become your dog's favorite toy!"
+        ]
+      },
+
+      "curriculum": {
+        "title": "Curriculum Overview",
+        "step1": {
+          "label": "STEP1.",
+          "title": "Class Introduction and Icebreaking",
+          "desc1": "Brief self-introduction between instructor and participants",
+          "desc2": "Overview of the dog toy making class"
+        },
+        "step2": {
+          "label": "STEP2.",
+          "title": "Understanding Dog Temperaments (5 min)",
+          "desc1": "Active dogs vs. quiet dogs",
+          "desc2": "Briefly explore which toys are suitable"
+        },
+        "step3": {
+          "label": "STEP3.",
+          "title": "Introduction to Materials and Tools (10 min)",
+          "desc1": "Introduction to safe fabrics, stuffing, and sewing kits",
+          "desc2": "Demonstration of basic sewing techniques"
+        },
+        "step4": {
+          "label": "STEP4.",
+          "title": "Toy Design Selection & Sketching (15 min)",
+          "desc1": "Choose from prepared designs or create your own",
+          "desc2": "Decide on dog name embroidery location, etc."
+        },
+        "step5": {
+          "label": "STEP5.",
+          "title": "Start Toy Making (60 min)",
+          "desc1": "Sequential production: cutting, sewing, stuffing",
+          "desc2": "1:1 coaching with instructor’s help"
+        },
+        "step6": {
+          "label": "STEP6.",
+          "title": "Detail Finishing and Decoration (15 min)",
+          "desc1": "Add embroidery, attach ribbons/tags, etc.",
+          "desc2": "Capture key photo points after completion"
+        },
+        "step7": {
+          "label": "STEP7.",
+          "title": "Sharing Finished Products & Photo Time (10 min)",
+          "desc1": "Introduce the toys made by participants",
+          "desc2": "Take photos of your dog or finished products"
+        },
+        "step8": {
+          "label": "STEP8.",
+          "title": "Packaging and Class Wrap-up (5 min)",
+          "desc1": "Gift wrapping provided",
+          "desc2": "Guide for writing reviews and introduce next classes"
+        }
+      },
+
+      "section3": {
+        "title": "Tutor Introduction",
+        "altText": "Tutor profile photo",
+        "name": "Pet Workshop Studio",
+        "instagram": "@_petgram",
+        "youtube": "Pet Workshop Channel",
+        "qualification": "✔ Pet Food Specialist Certification (Korea Companion Animal Education Association)",
+        "description": "Pet Workshop Studio is an officially registered handmade pet treat academy (No. 5615-1, Gyeonggi Office of Education). We offer a variety of classes including one-day classes, hobby courses, certification courses, business start-up classes, pet bakery, pet cakes, natural pet food, pet nutritionist, and pet communication cards (Pet Tarot) as the headquarters of the Korea Companion Animal Education Association (KCAEA)."
+      },
+
+      "reviewSection": {
+        "title": "Reviews",
+        "loadMore": "Load More",
+        "alt": {
+          "fullStar": "Full star",
+          "emptyStar": "Empty star",
+          "profileImage": "Profile image",
+          "reviewImage": "Review image"
+        }
+      },
+
+      "tabNav": {
+        "classIntro": "Class Introduction",
+        "curriculum": "Curriculum",
+        "tutorIntro": "Tutor Introduction",
+        "reviews": "Reviews"
+      },
 
       // filter
       filter: {

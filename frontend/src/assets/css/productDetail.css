@@ -20,7 +20,7 @@
   max-height: 700px;
   border-radius: 20px;
   margin-top: 80px;
-  max-width: 900px;
+  width: 900px;
 }
 #detailTitle .info {
     grid-column: 1;
@@ -82,6 +82,7 @@
   box-sizing: border-box;
   top: 80px;
   z-index: 900;
+  background-color: white;
 }
 #detailTitle .reservation h2 {
     font-size: 26px;
@@ -175,12 +176,34 @@
 /* 신청 전, 확인사항 */
 /* 이 부분 css는 나중에 내용물 들어오면 그때 다시 수정할 예정, 지금은 임시 박스 */
 #detailTitle .reservation .notice {
-    padding: 20px 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
   background-color: #F8F8F8;
   border-radius: 8px;
   min-height: 200px;
-
 }
+
+#detailTitle .notice strong{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding-bottom: 10px;
+}
+
+#detailTitle .notice strong::before{
+  content: '';
+  background-image: url(/img/exclamation-mark.png);
+  width: 20px;
+  height: 20px;
+  display: block;
+  background-size: contain;
+}
+
+#detailTitle .notice p{
+  padding-bottom: 20px;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
 /* 태그 */
 #detailTitle .reservation .tags span{
     padding: 0 15px !important;
@@ -221,6 +244,7 @@
 #detailTitle .reservation .btns .faqBtn {
     width: 62px;
   height: 62px;
+  font-size: 0;
 }
 #detailTitle .reservation .btns .applyBtn {
     width: 100%;
